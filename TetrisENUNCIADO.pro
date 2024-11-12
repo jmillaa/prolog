@@ -11,6 +11,10 @@
 
 include "tetrisv2.inc"
 
+/***********************************************
+            DOMINIOS 
+************************************************/
+
 domains
   ancho=integer
   tipo=integer
@@ -102,7 +106,7 @@ clauses
      
 /* Recalcula el suelo nos dice por donde van los indices del suelo */
 
-/* Ha llegado arriba del todo por lo que el suelo está calculado */     
+/* Ha llegado arriba del todo por lo que el suelo estï¿½ calculado */     
   recalcula_suelo(Suelo_in,Contador,Limite,_,Suelo_out):-
      Contador<Limite,
      Suelo_out=Suelo_in.
@@ -118,7 +122,7 @@ clauses
 
   recorrefila(_,[],_,[]).
      
-/* Vamos iterando si hay un 0 esa posicion de suelo se queda como está */
+/* Vamos iterando si hay un 0 esa posicion de suelo se queda como esta */
      
   recorrefila(Numero,[0|Cola],[S|Resto],Suelo_out):-
      recorrefila(Numero,Cola,Resto,Queda),
@@ -132,7 +136,7 @@ clauses
       mayor(S_in,Numero,S_out),                                 /* Ya esta detectad el suelo por arriba del 1 que se ha encontrado */
       Suelo_out=[S_out|Queda].
       
-/* Para cuando el suelo está por encima, necesita un predicado que determine el mayor de dos cantidades */
+/* Para cuando el suelo estï¿½ por encima, necesita un predicado que determine el mayor de dos cantidades */
       
   mayor(A,B,Mayor):-
       A>B,
@@ -147,7 +151,7 @@ clauses
   filallena([1|Cola]):-
   	filallena(Cola).
   	
-/* Quita las filas que están llenas de unos */
+/* Quita las filas que estï¿½n llenas de unos */
   
   quitafilas([],Contador_in,Contador_out,Tabla_out):-
      Contador_out=Contador_in,
@@ -159,7 +163,7 @@ clauses
      quitafilas(TTabla,Contador_in,Contador_out,Tabla_int),
      Tabla_out=[HTabla|Tabla_int].
      
-  quitafilas([H|Tabla_in],Contador_in,Contador_out,Tabla_out):-  /* Es para el caso que la fila de la cabeza está llena de 1's */
+  quitafilas([H|Tabla_in],Contador_in,Contador_out,Tabla_out):-  /* Es para el caso que la fila de la cabeza estï¿½ llena de 1's */
      H=[_|Numeros],
      filallena(Numeros),
      Contador_int=Contador_in-1,
@@ -181,7 +185,7 @@ clauses
      Tabla_out=[Filan|Tabla_int].
 
 
-/* Sirve para añadir tantas filas como haya eliminado */     
+/* Sirve para aï¿½adir tantas filas como haya eliminado */     
   anhade(Tabla_int,Contador,Limite,Tabla_out):-
      Contador>=Limite,
      Tabla_out=Tabla_int.
@@ -193,7 +197,7 @@ clauses
      anhade(Tabla_int,Contadorn,Limite,Tabla_out).
 
 
-/*Sirve para limpiar las filas que están llenas de 1's */
+/*Sirve para limpiar las filas que estï¿½n llenas de 1's */
   limpia_filas(Tabla_in,_,Suelo_out,Tabla_out):-
      quitafilas(Tabla_in,4,Quedan,Tabla_int),  /* 4 maximo de filas */
      Quedan<4,                  /* Es para el caso de que se haya quitado alguna fila */
@@ -204,14 +208,14 @@ clauses
   recorta(Tabla_entrada,Restantes,Suelo_entrada,Tabla_out,Suelo_out):-
      /* Renumera las que quedan */
      renumera(Tabla_entrada,0,Restantes,Tabla_semi),
-     /* Añade las nuevas vacias */
+     /* Aï¿½ade las nuevas vacias */
      anhade(Tabla_semi,Restantes,4,Tabla_out),
      recalcula_suelo(Suelo_entrada,4,1,Tabla_out,Suelo_out).
 
-/* A Continuación se generan los predicados que modifican el tablero con filas de un tamaño en una posicion */
+/* A Continuaciï¿½n se generan los predicados que modifican el tablero con filas de un tamaï¿½o en una posicion */
      
 /* FILAS DE 3 */
-  /* Centradas en el 2 */
+  /* Centradas en la columna 2 */
   modifica([A1,A2,A3,A4,A5],[_,_,_,S4,S5],Fila,2,3,Salida,Suelo_out):-
      A1=0,
      A2=0,
@@ -222,9 +226,16 @@ clauses
      Salida=[1,1,1,A4,A5],
      Suelo_out=[S1n,S2n,S3n,S4,S5].
 
-     /* TODO 
-        Completar la implementacion de la regla para la columna 3*/
-
+     /* Centradas en la columna 3*/ %(Hecho)
+   modifica([A1,A2,A3,A4,A5],[S1,_,_,_,S5],Fila,3,3,Salida,Suelo_out):-
+      A2=0,
+      A3=0,
+      A4=0,
+      S2n=Fila,
+      S3n=Fila,
+      S4n=Fila,
+      Salida=[A1,1,1,1,A5],
+      Suelo_out=[S1,S2n,S3n,S4n,S5].
 
   /* Centradas en el 4 */   
   modifica([A1,A2,A3,A4,A5],[S1,S2,_,_,_],Fila,4,3,Salida,Suelo_out):-
@@ -237,8 +248,8 @@ clauses
      Salida=[A1,A2,1,1,1],
      Suelo_out=[S1,S2,S3n,S4n,S5n].
      
-/* FILAS de 2 */
-  /* Centradas en el 1 */
+/* FILAS de 2 */ %(Hecho)
+  /* Centradas en la columna 1 */
   modifica([A1,A2,A3,A4,A5],[_,_,S3,S4,S5],Fila,1,2,Salida,Suelo_out):-
      A1=0,
      A2=0,
@@ -248,30 +259,70 @@ clauses
      Suelo_out=[S1n,S2n,S3,S4,S5].
   
 
-     /* TODO 
-        Completar la implementacion de las reglas para varias de las columnas */
+   /* Centradas en la columna 2 */
+  modifica([A1,A2,A3,A4,A5],[S1,_,_,S4,S5],Fila,2,2,Salida,Suelo_out):-
+     A2=0,
+     A3=0,
+     S2n=Fila,
+     S3n=Fila,
+     Salida=[A1,1,1,A4,A5],
+     Suelo_out=[S1,S2n,S3n,S4,S5].
 
+   /* Centradas en la columna 3 */
+  modifica([A1,A2,A3,A4,A5],[S1,S2,_,_,S5],Fila,3,2,Salida,Suelo_out):-
+     A3=0,
+     A4=0,
+     S3n=Fila,
+     S4n=Fila,
+     Salida=[A1,A2,1,1,A5],
+     Suelo_out=[S1,S2,S3n,S4n,S5].
+
+      /* Centradas en la columna 4 */
+  modifica([A1,A2,A3,A4,A5],[S1,S2,S3,_,_],Fila,4,2,Salida,Suelo_out):-
+     A4=0,
+     A5=0,
+     S4n=Fila,
+     S5n=Fila,
+     Salida=[A1,A2,A3,1,1],
+     Suelo_out=[S1,S2,S3,S4n,S5n].
 
      
-/* FILAS de 1 */
-  /* Centradas en el 1 */
+/* FILAS de 1 */ %(Hecho)
+  /* Centradas en la columna 1 */
   modifica([A1,A2,A3,A4,A5],[S1,S2,S3,S4,S5],_,1,1,Salida,Suelo_out):-
      A1=0,
      Salida=[1,A2,A3,A4,A5],
      S1n=S1+1,
      Suelo_out=[S1n,S2,S3,S4,S5].
   
-  /* Centradas en el 2 */      
+  /* Centradas en la columna 2 */      
   modifica([A1,A2,A3,A4,A5],[S1,S2,S3,S4,S5],_,2,1,Salida,Suelo_out):-
      A2=0,
      Salida=[A1,1,A3,A4,A5],
      S2n=S2+1,
      Suelo_out=[S1,S2n,S3,S4,S5].
+
+   /* Centradas en la columna 3 */      
+  modifica([A1,A2,A3,A4,A5],[S1,S2,S3,S4,S5],_,3,1,Salida,Suelo_out):-
+     A3=0,
+     Salida=[A1,A2,1,A4,A5],
+     S3n=S3+1,
+     Suelo_out=[S1,S2,S3n,S4,S5].
      
-     /* TODO 
-        Completar la implementacion de las reglas para varias de las columnas */
+   /* Centradas en la columna 4 */      
+  modifica([A1,A2,A3,A4,A5],[S1,S2,S3,S4,S5],_,4,1,Salida,Suelo_out):-
+     A4=0,
+     Salida=[A1,A2,A3,1,A5],
+     S4n=S4+1,
+     Suelo_out=[S1,S2,S3,S4n,S5].
 
-
+   /* Centradas en la columna 5 */      
+  modifica([A1,A2,A3,A4,A5],[S1,S2,S3,S4,S5],_,5,1,Salida,Suelo_out):-
+     A5=0,
+     Salida=[A1,A2,A3,A4,1],
+     S5n=S5+1,
+     Suelo_out=[S1,S2,S3,S4,S5n].
+     
 
      
 /* A PARTIR DE AQUI VIENEN LAS INTRODUCCIONES DE LAS FICHAS */
@@ -280,40 +331,42 @@ clauses
 /*        X  */
 /* Ficha XXX*/
 /* Orientacion 0 */     
-  mete(f(1,0,Columna),Tablero_in,Tablero_out):-  /*es una T.-->1  con la base horizontal --> 0 centrada en el pivote --> 3*/
-     Tablero_in=tab(Suelo_in,Tabla_in),
-     /* Predicado que determina el nivel del suelo */
-     /* afectados(Suelo_in,1,0,Columna,Suelo_partida),*/    /* ANCHO 3*/ /* Suelo_out Son los afectados para colocar una filita de tres */
+  mete(f(1, 0, Columna), Tablero_in, Tablero_out) :-
+    Tablero_in = tab(Suelo_in, Tabla_in),
 
-     /*inserta en la fila x columna y long z*/
-     /* Fila se obtiene del suelo_out. Es la fila, elemento de suelo, que está definido en la columna */
-     /* CAMBIO obtiene_fila(Fila,Suelo_partida,1,Columna),*/
-     Columna>1,Columna<5,
-     /* Fila se obtiene del suelo_out*/  
-     /* Tiene que analizar 2 columnas: Columna0 --> Fila0 Columna --> Fila1  y Columna2=Columna+1  --> Fila2
-        Filan1=Fila1+1 y Filan2=Fila2+1
-        y hay que verificar que Filan2<=Filan1+1. 3<=2+1 por ejemplo cabe */
-     Columna0=Columna-1,
-     Columna1=Columna+1,
-     obtiene_fila(Fila0,Suelo_in,1,Columna0),           
-     obtiene_fila(Fila1,Suelo_in,1,Columna),
-     obtiene_fila(Fila2,Suelo_in,1,Columna1),
-          
-     Fila2n=Fila2+1,
-     Fila1n=Fila1+1,
-     Fila0n=Fila0+1,
-     
-     Fila0n<=Fila1n,
-     Fila2n<=Fila1n,
-     
-     Filan=Fila1n,
-     Filan<4,
-     
-     cambia_fila(Tabla_in,Suelo_in,Filan,Columna,3,Tabla_int,Suelo_int),
-     Fila22=Filan+1,
-     cambia_fila(Tabla_int,Suelo_int,Fila22,Columna,1,Tabla_preout,Suelo_preout),
-     limpia_filas(Tabla_preout,Suelo_preout,Suelo_out,Tabla_out),
-     Tablero_out=tab(Suelo_out,Tabla_out).
+    % Verifica que la columna estÃ¡ en un rango vÃ¡lido para esta ficha (2, 3, o 4).
+    Columna > 1, Columna < 5,
+
+    % Define las columnas adyacentes a la columna central.
+    Columna0 = Columna - 1,  % Columna a la izquierda
+    Columna1 = Columna + 1,  % Columna a la derecha
+
+    % Obtiene las filas actuales del suelo en cada una de estas columnas.
+    obtiene_fila(Fila0, Suelo_in, 1, Columna0),           
+    obtiene_fila(Fila1, Suelo_in, 1, Columna),
+    obtiene_fila(Fila2, Suelo_in, 1, Columna1),
+
+    % Calcula la fila donde se colocarÃ¡ la base de la ficha (fila mÃ¡s alta de las 3 columnas).
+    Fila0n = Fila0 + 1,
+    Fila1n = Fila1 + 1,
+    Fila2n = Fila2 + 1,
+    Fila0n =< Fila1n,
+    Fila2n =< Fila1n,
+    Filan = Fila1n,
+
+    % Asegura que la ficha no se coloque en una fila superior a la mÃ¡xima (ej., 4 en este caso).
+    Filan < 4,
+
+    % Inserta la base horizontal de la ficha "XXX" en la fila `Filan`, centrada en `Columna`.
+    cambia_fila(Tabla_in, Suelo_in, Filan, Columna, 3, Tabla_int, Suelo_int),
+
+    % Inserta el bloque superior "X" en la fila inmediatamente arriba (`Filan + 1`), en la columna central.
+    Fila22 = Filan + 1,
+    cambia_fila(Tabla_int, Suelo_int, Fila22, Columna, 1, Tabla_preout, Suelo_preout),
+
+    % Limpia filas completas y actualiza el suelo despuÃ©s de la colocaciÃ³n.
+    limpia_filas(Tabla_preout, Suelo_preout, Suelo_out, Tabla_out),
+    Tablero_out = tab(Suelo_out, Tabla_out).
 
 /*       X  */
 /*       XX */
@@ -551,7 +604,7 @@ mete(f(3,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 /* Ficha XXX   */     
 mete(f(4,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 0 centrada en la mitad palo largo --> 3*/
 
-/* En esta zona faltan todas las reglas de la implementación de este tipo de ficha. Serían las cuatro orientaciones */
+/* En esta zona faltan todas las reglas de la implementaciï¿½n de este tipo de ficha. Serï¿½an las cuatro orientaciones */
 
      
 /*  FIN DE LAS FICHAS  */
@@ -571,7 +624,7 @@ mete(f(4,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      cambia_fila(T,Suelo_in,Fila,Columna,Ancho,Tabla_int,Suelo_out),
      Tabla_out=[H|Tabla_int].
      
-/* Predicados de inicialización e impresion de resultados */
+/* Predicados de inicializaciï¿½n e impresion de resultados */
      
   vacia(Tablero):-     
      Suelo=[0,0,0,0,0],
@@ -608,7 +661,7 @@ mete(f(4,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      
 /* Empiezan las reglas de colocacion */
 /* Columna 1*/ 
-  regla(Tab_in,Ficha,0,1,Tab_int):-  /*Está claro es el tablero, el tipo de ficha, su orientación, la columna y el resultado intermedio */
+  regla(Tab_in,Ficha,0,1,Tab_int):-  /*Estï¿½ claro es el tablero, el tipo de ficha, su orientaciï¿½n, la columna y el resultado intermedio */
      mete(f(Ficha,0,1),Tab_in,Tab_int).
 
   regla(Tab_in,Ficha,1,1,Tab_int):-
@@ -631,7 +684,7 @@ mete(f(4,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
   regla(Tab_in,Ficha,_,_,_):-
     write("Backtrack....",'\t'),write("Ficha: ",'\t'),write(Ficha,'\n'),pinta(Tab_in),write('\n'),fail.
 */
-/* Código de backtrack */
+/* Cï¿½digo de backtrack */
 
   backtrack([],Tablero,Solucion,Solucion):-
      pinta(Tablero),
