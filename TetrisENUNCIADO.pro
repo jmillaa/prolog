@@ -368,6 +368,56 @@ clauses
     limpia_filas(Tabla_preout, Suelo_preout, Suelo_out, Tabla_out),
     Tablero_out = tab(Suelo_out, Tabla_out).
 
+/*       XXX  */
+/* Ficha  X */
+/* Orientacion 2 */     
+ mete(f(1,2,Columna), Tablero_in, Tablero_out) :-  /* es una T. --> 1  con la base horizontal --> 0 centrada en la columna --> 3 */
+   % Metemos en Tablero_in el estado del suelo y la tabla actual 
+   Tablero_in = tab(Suelo_in, Tabla_in),
+   
+   % Verificamos que la pieza entra dentro de los limites del tablero 
+   Columna > 1, Columna < 5,
+
+   % Definimos los extremos de la T en las columnas del tablon Columna0 Columna1 Columna2
+   Columna0 = Columna - 1,
+   Columna2 = Columna + 1,
+
+   % Calculamos la altura de cada fila de las columnas 
+   obtiene_fila(Fila0, Suelo_in, 1, Columna0),
+   obtiene_fila(Fila1, Suelo_in, 1, Columna),
+   obtiene_fila(Fila2, Suelo_in, 1, Columna2),
+
+   % La pieza se va a colocar en una altura mas de la fila 
+   Fila0n = Fila0 + 1,
+   Fila1n = Fila1 + 1,
+   Fila2n = Fila2 + 1,
+
+   % Comprobamos que Fila1n es la más baja, y que Fila0n y Fila2n no son más de 1 unidad más altos que Fila1n.
+   Fila1n < Fila0n,
+   Fila1n < Fila2n,
+   Fila0n =< Fila1n + 1,
+   Fila2n =< Fila1n + 1,
+
+   % En el caso de que las comprobaciones anteriores sean verdaderas se asigna Filan = Fila1n
+   Filan = Fila1n,
+
+   % Nos aseguramos de que la ficha no se coloque fuera del limite del tablero
+   Filan < 4,
+
+   % Insertamos la base de la T
+   % Inserta la base vertical de la ficha "X" en la fila `Filan`, centrada en `Columna`.
+   cambia_fila(Tabla_in, Suelo_in, Filan, Columna, 1, Tabla_int, Suelo_int),
+
+   % Aumentamos la altura de la fila para insertar el resto de la figura
+   FilanSig = Filan + 1,
+   cambia_fila(Tabla_int, Suelo_int, FilanSig, Columna, 1, Tabla_preout, Suelo_preout),
+
+   % Limpia filas completas y actualiza el suelo después de la colocación.
+   limpia_filas(Tabla_preout, Suelo_preout, Suelo_out, Tabla_out),
+   Tablero_out = tab(Suelo_out, Tabla_out).
+
+
+
 /*       X  */
 /*       XX */
 /* Ficha X  */
@@ -404,17 +454,6 @@ mete(f(1,1,Columna),Tablero_in,Tablero_out):-  /*es una T.-->1  con la base hori
      cambia_fila(Tabla_int2,Suelo_int2,Fila3,Columna,1,Tabla_preout,Suelo_preout),
      limpia_filas(Tabla_preout,Suelo_preout,Suelo_out,Tabla_out),
      Tablero_out=tab(Suelo_out,Tabla_out).
-
-/*       XXX  */
-/* Ficha  X */
-/* Orientacion 2 */     
-  mete(f(1,2,Columna),Tablero_in,Tablero_out):-  /*es una T.-->1  con la base horizontal --> 0 centrada en la columna --> 3*/
-
-
-     /* TODO 
-        Completar la implementacion de la regla */
-
-
 
 /*        X  */
 /*       XX  */
