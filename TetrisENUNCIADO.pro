@@ -47,6 +47,10 @@ predicates
   escribelista(filatab)
   
   escribesol(solucion)
+
+  probar_orientaciones(integer, tablero, integer, list, list, list)
+
+  probar_columnas(integer, tablero, integer, integer, list, list, list)
   
   backtrack(juego,tablero,solucion,solucion)
   
@@ -55,8 +59,6 @@ predicates
   mete(ficha,tablero,tablero)
   
   cambia_fila(tabla,suelo,postab,postab,ancho,tabla,suelo)
-  
-  concatena(suelo,suelo,suelo)
   
   modifica(filatab,suelo,postab,postab,ancho,filatab,suelo)
   
@@ -350,8 +352,8 @@ clauses
     Fila0n = Fila0 + 1,
     Fila1n = Fila1 + 1,
     Fila2n = Fila2 + 1,
-    Fila0n =< Fila1n,
-    Fila2n =< Fila1n,
+    Fila0n <= Fila1n,
+    Fila2n <= Fila1n,
     Filan = Fila1n,
 
     % Asegura que la ficha no se coloque en una fila superior a la máxima (ej., 4 en este caso).
@@ -395,8 +397,8 @@ clauses
    % Comprobamos que Fila1n es la más baja, y que Fila0n y Fila2n no son más de 1 unidad más altos que Fila1n.
    Fila1n < Fila0n,
    Fila1n < Fila2n,
-   Fila0n =< Fila1n + 1,
-   Fila2n =< Fila1n + 1,
+   Fila0n <= Fila1n + 1,
+   Fila2n <= Fila1n + 1,
 
    % En el caso de que las comprobaciones anteriores sean verdaderas se asigna Filan = Fila1n
    Filan = Fila1n,
@@ -957,21 +959,39 @@ mete(f(4,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
   regla(Tab_in,Ficha,3,5,Tab_int):-
      mete(f(Ficha,3,5),Tab_in,Tab_int).
 
-/
+
 /* Codigo de backtrack */
 
-%Caso base: cuando ya no quedan mas piezas por colocar
-  backtrack([],Tablero,Solucion,Solucion):-
-     pinta(Tablero),
-     escribesol(Solucion).
-     
-/* Caso recursivo: quedan fichas por colocar */
-backtrack([Ficha|RestJuego], Tablero, SolucionActual, SolucionFinal) :-
-    between(0, 3, Orientacion),     % Probar todas las orientaciones (0, 1, 2, 3)
-    between(1, 5, Columna),         % Probar todas las columnas válidas (1 a 5, ajustable al ancho del tablero)
+/* Caso base: todas las fichas se han colocado */
+backtrack([], Tablero, Solucion, Solucion):-
+    pinta(Tablero),                 % Pinta el tablero final
+    escribesol(Solucion).           % Escribe la solución final
+
+/* Caso recursivo: intenta colocar la siguiente ficha */
+backtrack([Ficha | RestJuego], Tablero, SolucionActual, SolucionFinal):-
+    probar_orientaciones(Ficha, Tablero, 1, SolucionActual, RestJuego, SolucionFinal).
+
+/* Probar todas las orientaciones (0 a 3) */
+probar_orientaciones(Ficha, Tablero, Orientacion, SolucionActual, RestJuego, SolucionFinal):-
+    Orientacion <= 3,                         % Orientaciones válidas: 0, 1, 2, 3
+    probar_columnas(Ficha, Tablero, Orientacion, 1, SolucionActual, RestJuego, SolucionFinal).
+
+probar_orientaciones(Ficha, Tablero, Orientacion, SolucionActual, RestJuego, SolucionFinal):-
+    Orientacion < 3,                          % Incrementa orientación si no se encuentra solución
+    OrientacionSiguiente is Orientacion + 1,
+    probar_orientaciones(Ficha, Tablero, OrientacionSiguiente, SolucionActual, RestJuego, SolucionFinal).
+
+/* Probar todas las columnas (1 a 5) */
+probar_columnas(Ficha, Tablero, Orientacion, Columna, SolucionActual, RestJuego, SolucionFinal):-
+    Columna <= 5,                             % Columnas válidas: 1 a 5
     regla(Tablero, Ficha, Orientacion, Columna, TableroActualizado),  % Intentar colocar la ficha
-    Movimiento = f(Ficha, Orientacion, Columna), % Registrar el movimiento
-    backtrack(RestJuego, TableroActualizado, [Movimiento|SolucionActual], SolucionFinal). % Avanzar recursivamente
+    Movimiento = f(Ficha, Orientacion, Columna), % Registrar el movimiento realizado
+    backtrack(RestJuego, TableroActualizado, [Movimiento | SolucionActual], SolucionFinal).
+
+probar_columnas(Ficha, Tablero, Orientacion, Columna, SolucionActual, RestJuego, SolucionFinal):-
+    Columna < 5,                              % Incrementa columna si no se encuentra solución
+    ColumnaSiguiente is Columna + 1,
+    probar_columnas(Ficha, Tablero, Orientacion, ColumnaSiguiente, SolucionActual, RestJuego, SolucionFinal).
 
   tetris():-
   
