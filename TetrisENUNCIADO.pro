@@ -48,10 +48,10 @@ predicates
   
   escribesol(solucion)
 
-  probar_orientaciones(integer, tablero, integer, list, list, list)
+  probar_orientaciones(tipo, tablero, orientacion, solucion, juego, solucion)
 
-  probar_columnas(integer, tablero, integer, integer, list, list, list)
-  
+  probar_columnas(tipo, tablero, orientacion, postab, solucion, juego, solucion)
+
   backtrack(juego,tablero,solucion,solucion)
   
   regla(tablero,tipo,orientacion,postab,tablero)
@@ -963,34 +963,43 @@ mete(f(4,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 /* Codigo de backtrack */
 
 /* Caso base: todas las fichas se han colocado */
-backtrack([], Tablero, Solucion, Solucion):-
-    pinta(Tablero),                 % Pinta el tablero final
-    escribesol(Solucion).           % Escribe la solución final
+backtrack([], Tablero, Solucion, Solucion):- 
+    write("=== Caso base alcanzado ===\n"), 
+    write("Estado final del tablero:\n"), pinta(Tablero), % Pinta el tablero final
+    write("Solución final:\n"), escribesol(Solucion).     % Escribe la solución final
 
 /* Caso recursivo: intenta colocar la siguiente ficha */
-backtrack([Ficha | RestJuego], Tablero, SolucionActual, SolucionFinal):-
-    probar_orientaciones(Ficha, Tablero, 1, SolucionActual, RestJuego, SolucionFinal).
+backtrack([Ficha | RestJuego], Tablero, SolucionActual, SolucionFinal):- 
+    write("Intentando colocar ficha: "), write(Ficha), write("\n"),
+    write("Tablero actual:\n"), pinta(Tablero),
+    probar_orientaciones(Ficha, Tablero, 0, SolucionActual, RestJuego, SolucionFinal).
 
 /* Probar todas las orientaciones (0 a 3) */
-probar_orientaciones(Ficha, Tablero, Orientacion, SolucionActual, RestJuego, SolucionFinal):-
+probar_orientaciones(Ficha, Tablero, Orientacion, SolucionActual, RestJuego, SolucionFinal):- 
     Orientacion <= 3,                         % Orientaciones válidas: 0, 1, 2, 3
+    write("  Probando orientación: "), write(Orientacion), write("\n"),
     probar_columnas(Ficha, Tablero, Orientacion, 1, SolucionActual, RestJuego, SolucionFinal).
 
-probar_orientaciones(Ficha, Tablero, Orientacion, SolucionActual, RestJuego, SolucionFinal):-
+probar_orientaciones(Ficha, Tablero, Orientacion, SolucionActual, RestJuego, SolucionFinal):- 
     Orientacion < 3,                          % Incrementa orientación si no se encuentra solución
-    OrientacionSiguiente is Orientacion + 1,
+    OrientacionSiguiente = Orientacion + 1,
+    write("  Cambiando a la siguiente orientación: "), write(OrientacionSiguiente), write("\n"),
     probar_orientaciones(Ficha, Tablero, OrientacionSiguiente, SolucionActual, RestJuego, SolucionFinal).
 
 /* Probar todas las columnas (1 a 5) */
-probar_columnas(Ficha, Tablero, Orientacion, Columna, SolucionActual, RestJuego, SolucionFinal):-
+probar_columnas(Ficha, Tablero, Orientacion, Columna, SolucionActual, RestJuego, SolucionFinal):- 
     Columna <= 5,                             % Columnas válidas: 1 a 5
+    write("    Intentando en columna: "), write(Columna), write("\n"),
     regla(Tablero, Ficha, Orientacion, Columna, TableroActualizado),  % Intentar colocar la ficha
     Movimiento = f(Ficha, Orientacion, Columna), % Registrar el movimiento realizado
+    write("    Ficha colocada: "), write(Movimiento), write("\n"),
+    write("    Tablero actualizado:\n"), pinta(TableroActualizado),
     backtrack(RestJuego, TableroActualizado, [Movimiento | SolucionActual], SolucionFinal).
 
-probar_columnas(Ficha, Tablero, Orientacion, Columna, SolucionActual, RestJuego, SolucionFinal):-
+probar_columnas(Ficha, Tablero, Orientacion, Columna, SolucionActual, RestJuego, SolucionFinal):- 
     Columna < 5,                              % Incrementa columna si no se encuentra solución
-    ColumnaSiguiente is Columna + 1,
+    ColumnaSiguiente = Columna + 1,
+    write("    Cambiando a la siguiente columna: "), write(ColumnaSiguiente), write("\n"),
     probar_columnas(Ficha, Tablero, Orientacion, ColumnaSiguiente, SolucionActual, RestJuego, SolucionFinal).
 
   tetris():-
