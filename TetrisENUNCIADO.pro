@@ -897,33 +897,81 @@ mete(f(4,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 
   regla(Tab_in,Ficha,1,1,Tab_int):-
      mete(f(Ficha,1,1),Tab_in,Tab_int).
-  /* TODO TODO TODO */
-/* Columna 2*/
-  regla(Tab_in,Ficha,0,2,Tab_int):-
+   
+  regla(Tab_in,Ficha,2,1,Tab_int):-
+     mete(f(Ficha,2,1),Tab_in,Tab_int).
+
+  regla(Tab_in,Ficha,3,1,Tab_int):-
+     mete(f(Ficha,3,1),Tab_in,Tab_int).
+
+  
+/* Columna 2*/ 
+  regla(Tab_in,Ficha,0,2,Tab_int):-  /*Est� claro es el tablero, el tipo de ficha, su orientaci�n, la columna y el resultado intermedio */
      mete(f(Ficha,0,2),Tab_in,Tab_int).
 
-  /* TODO TODO TODO */
+  regla(Tab_in,Ficha,1,2,Tab_int):-
+     mete(f(Ficha,1,2),Tab_in,Tab_int).
+   
+  regla(Tab_in,Ficha,2,2,Tab_int):-
+     mete(f(Ficha,2,2),Tab_in,Tab_int).
 
-/* Columna 3*/
-  regla(Tab_in,Ficha,0,3,Tab_int):-
+  regla(Tab_in,Ficha,3,2,Tab_int):-
+     mete(f(Ficha,3,2),Tab_in,Tab_int).
+
+/* Columna 3*/ 
+  regla(Tab_in,Ficha,0,3,Tab_int):-  /*Est� claro es el tablero, el tipo de ficha, su orientaci�n, la columna y el resultado intermedio */
      mete(f(Ficha,0,3),Tab_in,Tab_int).
-  /* TODO TODO TODO */
-  /* Faltan columnas!*/
 
+  regla(Tab_in,Ficha,1,3,Tab_int):-
+     mete(f(Ficha,1,3),Tab_in,Tab_int).
+   
+  regla(Tab_in,Ficha,2,3,Tab_int):-
+     mete(f(Ficha,2,3),Tab_in,Tab_int).
 
-/*     
-  regla(Tab_in,Ficha,_,_,_):-
-    write("Backtrack....",'\t'),write("Ficha: ",'\t'),write(Ficha,'\n'),pinta(Tab_in),write('\n'),fail.
-*/
-/* C�digo de backtrack */
+  regla(Tab_in,Ficha,3,3,Tab_int):-
+     mete(f(Ficha,3,3),Tab_in,Tab_int).
 
+/* Columna 4*/ 
+  regla(Tab_in,Ficha,0,4,Tab_int):-  /*Est� claro es el tablero, el tipo de ficha, su orientaci�n, la columna y el resultado intermedio */
+     mete(f(Ficha,0,4),Tab_in,Tab_int).
+
+  regla(Tab_in,Ficha,1,4,Tab_int):-
+     mete(f(Ficha,1,4),Tab_in,Tab_int).
+   
+  regla(Tab_in,Ficha,2,4,Tab_int):-
+     mete(f(Ficha,2,4),Tab_in,Tab_int).
+
+  regla(Tab_in,Ficha,3,4,Tab_int):-
+     mete(f(Ficha,3,4),Tab_in,Tab_int).
+
+/* Columna 5*/ 
+  regla(Tab_in,Ficha,0,5,Tab_int):-  /*Est� claro es el tablero, el tipo de ficha, su orientaci�n, la columna y el resultado intermedio */
+     mete(f(Ficha,0,5),Tab_in,Tab_int).
+
+  regla(Tab_in,Ficha,1,5,Tab_int):-
+     mete(f(Ficha,1,5),Tab_in,Tab_int).
+   
+  regla(Tab_in,Ficha,2,5,Tab_int):-
+     mete(f(Ficha,2,5),Tab_in,Tab_int).
+
+  regla(Tab_in,Ficha,3,5,Tab_int):-
+     mete(f(Ficha,3,5),Tab_in,Tab_int).
+
+/
+/* Codigo de backtrack */
+
+%Caso base: cuando ya no quedan mas piezas por colocar
   backtrack([],Tablero,Solucion,Solucion):-
      pinta(Tablero),
      escribesol(Solucion).
      
-/* TODO 
-
-  Es evidente que se necesita implementar la parte recursiva */
+/* Caso recursivo: quedan fichas por colocar */
+backtrack([Ficha|RestJuego], Tablero, SolucionActual, SolucionFinal) :-
+    between(0, 3, Orientacion),     % Probar todas las orientaciones (0, 1, 2, 3)
+    between(1, 5, Columna),         % Probar todas las columnas válidas (1 a 5, ajustable al ancho del tablero)
+    regla(Tablero, Ficha, Orientacion, Columna, TableroActualizado),  % Intentar colocar la ficha
+    Movimiento = f(Ficha, Orientacion, Columna), % Registrar el movimiento
+    backtrack(RestJuego, TableroActualizado, [Movimiento|SolucionActual], SolucionFinal). % Avanzar recursivamente
 
   tetris():-
   
