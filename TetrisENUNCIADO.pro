@@ -395,10 +395,8 @@ clauses
    Fila2n = Fila2 + 1,
 
    % Comprobamos que Fila1n es la más baja, y que Fila0n y Fila2n no son más de 1 unidad más altos que Fila1n.
-   Fila1n < Fila0n,
-   Fila1n < Fila2n,
-   Fila0n <= Fila1n + 1,
-   Fila2n <= Fila1n + 1,
+   Fila1n >= Fila0n,
+   Fila1n >= Fila2n,
 
    % En el caso de que las comprobaciones anteriores sean verdaderas se asigna Filan = Fila1n
    Filan = Fila1n,
@@ -412,7 +410,7 @@ clauses
 
    % Aumentamos la altura de la fila para insertar el resto de la figura
    FilanSig = Filan + 1,
-   cambia_fila(Tabla_int, Suelo_int, FilanSig, Columna, 1, Tabla_preout, Suelo_preout),
+   cambia_fila(Tabla_int, Suelo_int, FilanSig, Columna, 3, Tabla_preout, Suelo_preout),
 
    % Limpia filas completas y actualiza el suelo después de la colocación.
    limpia_filas(Tabla_preout, Suelo_preout, Suelo_out, Tabla_out),
@@ -837,9 +835,157 @@ mete(f(4,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      cambia_fila(Tabla_preint,Suelo_preint,Fila3,Columna,1,Tabla_preout,Suelo_preout),
      limpia_filas(Tabla_preout,Suelo_preout,Suelo_out,Tabla_out),
      Tablero_out=tab(Suelo_out,Tabla_out).
+ 
+   /*FICHA PALO       */
+   /*           X     */
+   /*        -> X     */
+   /*           X     */    
+   /*           X     */
+   %Orientacion 0
+mete(f(5,0,Columna),Tablero_in,Tablero_out):- 
+     Tablero_in=tab(Suelo_in,Tabla_in),
 
-
+     %Calculamos los limites laterales
+     Columna>=1,Columna<=5,
      
+     %Obtenemos las alturas del suelo
+     obtiene_fila(Fila1,Suelo_in,1,Columna),
+     
+     %Hacemos las comprobaciones
+     Fila1n = Fila1,
+     
+     %Asignamos
+     Filan=Fila1,
+     
+     %Hacemos la insercion
+     cambia_fila(Tabla_in,Suelo_in,Filan,Columna,1,Tabla_int,Suelo_int),
+     Fila22=Filan+1,
+     cambia_fila(Tabla_int,Suelo_int,Fila22,Columna,1,Tabla_preint,Suelo_preint),
+     Fila3=Fila22+1,
+     cambia_fila(Tabla_preint,Suelo_preint,Fila3,Columna,1,Tabla_preout,Suelo_preout),
+     Fila4 = Fila3 + 1,
+     cambia_fila(Tabla_preout,Suelo_preout,Fila4,Columna,1,Tabla_prepreout,Suelo_prepreout),
+     limpia_filas(Tabla_prepreout,Suelo_prepreout,Suelo_out,Tabla_out),
+     Tablero_out=tab(Suelo_out,Tabla_out).
+
+/*FICHA PALO        |      */
+   /*           X X X X    */
+   %Orientacion 1
+mete(f(5,1,Columna),Tablero_in,Tablero_out):-  
+     Tablero_in=tab(Suelo_in,Tabla_in),
+
+     %Calculamos los limites laterales
+     Columna>=3,Columna<=4,
+
+     %Asignamos las columnas invliucradas en la pieza
+     Columna0=Columna-2,
+     Columna1=Columna-1,
+     Columna3=Columna+1,
+
+     %Obtenemos las alturas del suelo
+     obtiene_fila(Fila1,Suelo_in,1,Columna0),
+     obtiene_fila(Fila2,Suelo_in,1,Columna1),
+     obtiene_fila(Fila3,Suelo_in,1,Columna),
+     obtiene_fila(Fila4,Suelo_in,1,Columna3),
+
+     %Aumentamos en 1 la altura de las filas para hacer la insercion
+     Fila1n = Fila1 + 1,
+     Fila2n = Fila2 + 1,
+     Fila3n = Fila3 + 1,
+     Fila4n = Fila4 + 1,
+
+     %Hacemos las comprobaciones de alturas
+     Fila1n<=Fila3n,
+     Fila2n<=Fila3n,
+     Fila4n<=Fila3n,
+     
+     %Chequeamos la altura del limite de arriba
+
+     Fila3n<=4,
+     
+     %Asignamos
+     Filan=Fila3n,
+
+     %Hacemos la insercion
+     cambia_fila(Tabla_in,Suelo_in,Filan,Columna0,4,Tabla_int,Suelo_int),
+     limpia_filas(Tabla_int,Suelo_int,Suelo_out,Tabla_out),
+     Tablero_out=tab(Suelo_out,Tabla_out).
+
+/*FICHA PALO       */
+   /*           X     */
+   /*           X     */
+   /*        -> X     */    
+   /*           X     */
+   %Orientacion 2
+mete(f(5,2,Columna),Tablero_in,Tablero_out):- 
+     Tablero_in=tab(Suelo_in,Tabla_in),
+
+     %Calculamos los limites laterales
+     Columna>=1,Columna<=5,
+     
+     %Obtenemos las alturas del suelo
+     obtiene_fila(Fila1,Suelo_in,1,Columna),
+     
+     %Hacemos las comprobaciones
+     Fila1 = 0,
+     
+     %Asignamos
+     Filan=Fila1,
+     
+     %Hacemos la insercion
+     cambia_fila(Tabla_in,Suelo_in,Filan,Columna,1,Tabla_int,Suelo_int),
+     Fila22=Filan+1,
+     cambia_fila(Tabla_int,Suelo_int,Fila22,Columna,1,Tabla_preint,Suelo_preint),
+     Fila3=Fila22+1,
+     cambia_fila(Tabla_preint,Suelo_preint,Fila3,Columna,1,Tabla_preout,Suelo_preout),
+     Fila4 = Fila3 + 1,
+     cambia_fila(Tabla_preout,Suelo_preout,Fila4,Columna,1,Tabla_prepreout,Suelo_prepreout),
+     limpia_filas(Tabla_prepreout,Suelo_prepreout,Suelo_out,Tabla_out),
+     Tablero_out=tab(Suelo_out,Tabla_out).
+
+/*FICHA PALO      |        */
+   /*           X X X X    */
+   %Orientacion 3
+mete(f(5,3,Columna),Tablero_in,Tablero_out):-  
+     Tablero_in=tab(Suelo_in,Tabla_in),
+
+     %Calculamos los limites laterales
+     Columna>=2,Columna<=3,
+
+     %Asignamos las columnas invliucradas en la pieza
+     Columna0=Columna-1,
+     Columna2=Columna+1,
+     Columna3=Columna+2,
+
+     %Obtenemos las alturas del suelo
+     obtiene_fila(Fila1,Suelo_in,1,Columna0),
+     obtiene_fila(Fila2,Suelo_in,1,Columna),
+     obtiene_fila(Fila3,Suelo_in,1,Columna2),
+     obtiene_fila(Fila4,Suelo_in,1,Columna3),
+
+     %Aumentamos en 1 la altura de las filas para hacer la insercion
+     Fila1n = Fila1 + 1,
+     Fila2n = Fila2 + 1,
+     Fila3n = Fila3 + 1,
+     Fila4n = Fila4 + 1,
+
+     %Hacemos las comprobaciones de alturas
+     Fila1n<=Fila2n,
+     Fila3n<=Fila2n,
+     Fila4n<=Fila2n,
+     
+     %Chequeamos la altura del limite de arriba
+
+     Fila2n<=4,
+     
+     %Asignamos
+     Filan=Fila2n,
+
+     %Hacemos la insercion
+     cambia_fila(Tabla_in,Suelo_in,Filan,Columna0,4,Tabla_int,Suelo_int),
+     limpia_filas(Tabla_int,Suelo_int,Suelo_out,Tabla_out),
+     Tablero_out=tab(Suelo_out,Tabla_out).
+
 /*  FIN DE LAS FICHAS  */
      
   cambia_fila([],S,_,_,_,[],S).
