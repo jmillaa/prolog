@@ -523,6 +523,7 @@ mete(f(2,_,Columna),Tablero_in,Tablero_out):-  /*es un cuadrado.-->1  con la bas
      limpia_filas(Tabla_preout,Suelo_preout,Suelo_out,Tabla_out),
      Tablero_out=tab(Suelo_out,Tabla_out).
 
+
 /*TIPO 3. ELE  */
 /*             */
 /*         X   */
