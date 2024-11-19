@@ -180,9 +180,9 @@ renumera([Fila|Resto], Contador, Limite, [FilaRenumerada|RestoRenumerado]):-
     Fila = [_|Contenido],           % Ignoramos el índice original
     NuevoIndice = Limite - Contador, % Calculamos el nuevo índice
     FilaRenumerada = [NuevoIndice|Contenido], % Asignamos el nuevo índice
+    write("Renumera fila: "), write(FilaRenumerada), nl,  % Mensaje de depuración para cada fila renumerada
     ContadorSiguiente = Contador + 1,        % Incrementamos el contador
     renumera(Resto, ContadorSiguiente, Limite, RestoRenumerado).
-
 
 /* Sirve para a�adir tantas filas como haya eliminado */     
   anhade(Tabla_int,Contador,Limite,Tabla_out):-
@@ -196,13 +196,15 @@ renumera([Fila|Resto], Contador, Limite, [FilaRenumerada|RestoRenumerado]):-
      anhade(Tabla_int,Contadorn,Limite,Tabla_out).
 
 
-/*Sirve para limpiar las filas que est�n llenas de 1's */
-  limpia_filas(Tabla_in,_,Suelo_out,Tabla_out):-
-     quitafilas(Tabla_in,4,Quedan,Tabla_int),  /* 4 maximo de filas */
-     Quedan<4,                  /* Es para el caso de que se haya quitado alguna fila */
-     recorta(Tabla_int,Quedan,[0,0,0,0,0],Tabla_out,Suelo_out).
+/* Sirve para limpiar las filas que están llenas de 1's */
+limpia_filas(Tabla_in, _, Suelo_out, Tabla_out):-
+    quitafilas(Tabla_in, 4, Quedan, Tabla_int),  /* 4 máximo de filas */
+    Quedan < 4,                  /* Es para el caso de que se haya quitado alguna fila */
+    recorta(Tabla_int, Quedan, [0, 0, 0, 0, 0], Tabla_out, Suelo_out),
+    write("Tablero después de eliminar filas llenas:\n"), pinta(tab(Suelo_out, Tabla_out)), % Depura el tablero
+    write("Suelo después de limpiar filas llenas: "), write(Suelo_out), nl.  % Depura el suelo
 
-  limpia_filas(Tabla,Suelo,Suelo,Tabla).
+limpia_filas(Tabla, Suelo, Suelo, Tabla).
   
   recorta(Tabla_entrada,Restantes,Suelo_entrada,Tabla_out,Suelo_out):-
      /* Renumera las que quedan */
@@ -628,8 +630,8 @@ mete(f(3,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Fila0n=Fila0+1,
      
      %Verificamos
-     Fila1n<=Fila0n+1,
-     Fila2n<=Fila0n+1,
+     Fila0n<Fila1n,
+     Fila0n<Fila2n,
 
      %Asignamos la altura
      Filan=Fila1n,
@@ -649,7 +651,7 @@ mete(f(3,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 /*       XX   */
 /*        X   */
 /* Ficha  X   */
-%REVISED
+
 /* Orientacion CUalquiera*/     
 mete(f(3,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 1 centrada en la columna --> 3*/
      Tablero_in=tab(Suelo_in,Tabla_in),
@@ -671,6 +673,8 @@ mete(f(3,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Fila1n <= Fila2n,
 
      Filan = Fila2n,
+
+     
 
      %Insertamos en el tablero
      cambia_fila(Tabla_in,Suelo_in,Filan,Columna,1,Tabla_int,Suelo_int),
