@@ -329,11 +329,11 @@ clauses
      
 /* A PARTIR DE AQUI VIENEN LAS INTRODUCCIONES DE LAS FICHAS */
 /*  TIPO   1. LA T invertida*/
-
+% REVISED
 /*        X  */
 /* Ficha XXX*/
 /* Orientacion 0 */     
-  mete(f(1, 0, Columna), Tablero_in, Tablero_out) :-
+  mete(f(1,0,Columna), Tablero_in, Tablero_out) :-
     Tablero_in = tab(Suelo_in, Tabla_in),
 
     % Verifica que la columna está en un rango válido para esta ficha (2, 3, o 4).
@@ -372,6 +372,7 @@ clauses
 
 /*       XXX  */
 /* Ficha  X */
+%REVISED
 /* Orientacion 2 */     
  mete(f(1,2,Columna), Tablero_in, Tablero_out) :-  /* es una T. --> 1  con la base horizontal --> 0 centrada en la columna --> 3 */
    % Metemos en Tablero_in el estado del suelo y la tabla actual 
@@ -422,11 +423,12 @@ clauses
 /*       XX */
 /* Ficha X  */
 /* Orientacion 1 */     
+%REVISED
 mete(f(1,1,Columna),Tablero_in,Tablero_out):-  /*es una T.-->1  con la base horizontal --> 0 centrada en el pivote --> 3*/
      Tablero_in=tab(Suelo_in,Tabla_in),
     
      /*inserta en la fila x columna y long z*/
-     Columna>1,Columna<=5,
+     Columna>=1,Columna<5,
 
      /* Fila se obtiene del suelo_out*/  
      /* Tiene que analizar 2 columnas: Columna --> Fila1  y Columna2=Columna+1  --> Fila2
@@ -457,6 +459,7 @@ mete(f(1,1,Columna),Tablero_in,Tablero_out):-  /*es una T.-->1  con la base hori
 /*       XX  */
 /* Ficha  X  */
 /* Orientacion 3 */     
+%REVISED
 mete(f(1,3,Columna),Tablero_in,Tablero_out):-  /*es una T.-->1  con la base horizontal --> 0 centrada en pivote --> 3*/
      Tablero_in=tab(Suelo_in,Tabla_in),
    
@@ -524,6 +527,7 @@ mete(f(2,_,Columna),Tablero_in,Tablero_out):-  /*es un cuadrado.-->1  con la bas
 /*             */
 /*         X   */
 /* Ficha XXX   */    
+% REVISED
 mete(f(3,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 0 centrada en la mitad de Largo --> 3*/
      Tablero_in=tab(Suelo_in,Tabla_in),
      %Comprobamos limites 
@@ -549,6 +553,7 @@ mete(f(3,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      %Asignamos la altura
      Filan=Fila1n,
      %Comprobamos limite de altura
+     
      Filan<4,
 
      %Vamos con la insercion 
@@ -562,7 +567,8 @@ mete(f(3,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 /*FICHA ELE    */
 /*       X     */
 /*       X     */
-/* Ficha XX    */     
+/* Ficha XX    */ 
+%REVISED    
 mete(f(3,1,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 1 centrada en la columna --> 3*/
      Tablero_in=tab(Suelo_in,Tabla_in),
 
@@ -601,7 +607,8 @@ mete(f(3,1,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 /*FICHA ELE    */
 /*             */
 /*       XXX   */
-/* Ficha X     */     
+/* Ficha X     */ 
+%REVISED    
 mete(f(3,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 1 centrada en la columna --> 3*/
      Tablero_in=tab(Suelo_in,Tabla_in),
 
@@ -634,7 +641,7 @@ mete(f(3,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      %realizamos la insercion en el tablero
      cambia_fila(Tabla_in,Suelo_in,Filan,Columna0,1,Tabla_int,Suelo_int),
      FilanSig = Filan + 1,
-     cambia_fila(Tabla_int,Suelo_int,FilanSig,Columna0,3,Tabla_preout,Suelo_preout),
+     cambia_fila(Tabla_int,Suelo_int,FilanSig,Columna,3,Tabla_preout,Suelo_preout),
      limpia_filas(Tabla_preout,Suelo_preout,Suelo_out,Tabla_out),
      Tablero_out=tab(Suelo_out,Tabla_out).
 
@@ -644,6 +651,7 @@ mete(f(3,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 /*       XX   */
 /*        X   */
 /* Ficha  X   */
+%REVISED
 /* Orientacion CUalquiera*/     
 mete(f(3,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 1 centrada en la columna --> 3*/
      Tablero_in=tab(Suelo_in,Tabla_in),
@@ -662,7 +670,7 @@ mete(f(3,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 
      %Verificamos que quepa la pieza
 
-     Fila1n >= Fila2n + 2,
+     Fila1n <= Fila2n,
 
      Filan = Fila2n,
 
@@ -680,7 +688,8 @@ mete(f(3,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 /*FICHA ELE_INV*/
 /*             */
 /*       X     */
-/* Ficha XXX   */   
+/* Ficha XXX   */  
+%REVISED 
 % Orientacion 0  
 mete(f(4,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 0 centrada en la mitad palo largo --> 3*/
      Tablero_in=tab(Suelo_in,Tabla_in),
@@ -710,7 +719,7 @@ mete(f(4,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Filan<4,
 
      %Vamos con la insercion 
-     cambia_fila(Tabla_in,Suelo_in,Filan,Columna0,3,Tabla_int,Suelo_int),
+     cambia_fila(Tabla_in,Suelo_in,Filan,Columna,3,Tabla_int,Suelo_int),
      FilanSig = Filan + 1,
      cambia_fila(Tabla_int,Suelo_int,FilanSig,Columna0,1,Tabla_preout,Suelo_preout),
      limpia_filas(Tabla_preout,Suelo_preout,Suelo_out,Tabla_out),
@@ -721,6 +730,7 @@ mete(f(4,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      /* Ficha   X X */
      /*         X   */   
      /*         X   */
+     %REVISED
      % Orientacion 1  
 mete(f(4,1,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 0 centrada en la mitad palo largo --> 3*/
     Tablero_in=tab(Suelo_in,Tabla_in),
@@ -740,7 +750,7 @@ mete(f(4,1,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Fila1n=Fila1+1,
      
      %Hacemos las comprobaciones
-     Fila2n >= Fila1n + 2,
+     Fila2n <= Fila1n,
      
      %Asignamos
      Filan=Fila1n,
@@ -762,6 +772,7 @@ mete(f(4,1,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      /*             X   */   
      /*                 */
      % Orientacion 2
+     %REVISED
 mete(f(4,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 0 centrada en la mitad palo largo --> 3*/
   
     Tablero_in=tab(Suelo_in,Tabla_in),
@@ -783,8 +794,8 @@ mete(f(4,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Fila0n=Fila0+1,
    
      %Comprobamos si se puede meter o no
-     Fila1n<=Fila2n+1,
-     Fila0n<=Fila2n+1,
+     Fila0n>Fila2n,
+     Fila1n>Fila2n,
      %Asignamos la altura
      Filan=Fila1n,
      %Comprobamos limite de altura
@@ -793,7 +804,7 @@ mete(f(4,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      %Vamos con la insercion 
      cambia_fila(Tabla_in,Suelo_in,Filan,Columna1,1,Tabla_int,Suelo_int),
      FilanSig = Filan + 1,
-     cambia_fila(Tabla_int,Suelo_int,FilanSig,Columna0,3,Tabla_preout,Suelo_preout),
+     cambia_fila(Tabla_int,Suelo_int,FilanSig,Columna,3,Tabla_preout,Suelo_preout),
      limpia_filas(Tabla_preout,Suelo_preout,Suelo_out,Tabla_out),
      Tablero_out=tab(Suelo_out,Tabla_out).
 
@@ -802,6 +813,7 @@ mete(f(4,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
    /*           X     */
    /* Ficha   X X    */     
    %Orientacion 3
+   %REVISED
 mete(f(4,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base horizontal --> 1 centrada en la columna --> 3*/
      Tablero_in=tab(Suelo_in,Tabla_in),
 
