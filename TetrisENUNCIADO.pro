@@ -173,18 +173,15 @@ clauses
      Tabla_out=Tabla_int.
 
 
-/* Sirve para renumerar las que han quedado tras eliminar */
-     
-  renumera(Tabla,Contador,Limite,Tabla):-
-     Contador=Limite.
-     
-  renumera([Fila|Resto],Contador,Limite,Tabla_out):-   
-     Contadorn=Contador+1,     
-     renumera(Resto,Contadorn,Limite,Tabla_int),
-     Fila=[_|TF],
-     NuevaFila=4-(Contadorn+1),
-     Filan=[NuevaFila|TF],
-     Tabla_out=[Filan|Tabla_int].
+/* Renumera las filas restantes después de eliminar las filas llenas */
+renumera([], _, _, []).
+renumera([Fila|Resto], Contador, Limite, [FilaRenumerada|RestoRenumerado]):-
+    Contador < Limite,              % Mientras el contador esté dentro del límite
+    Fila = [_|Contenido],           % Ignoramos el índice original
+    NuevoIndice = Limite - Contador, % Calculamos el nuevo índice
+    FilaRenumerada = [NuevoIndice|Contenido], % Asignamos el nuevo índice
+    ContadorSiguiente = Contador + 1,        % Incrementamos el contador
+    renumera(Resto, ContadorSiguiente, Limite, RestoRenumerado).
 
 
 /* Sirve para a�adir tantas filas como haya eliminado */     
