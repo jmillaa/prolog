@@ -631,7 +631,7 @@ mete(f(3,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      
      %Verificamos
      Fila1n>Fila0n,
-     Fila1n<=Fila2n,
+     Fila1n>=Fila2n,
 
      %Asignamos la altura
      Filan=Fila1n,
@@ -676,8 +676,6 @@ mete(f(3,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 
      Filan < 3,
 
-     
-
      %Insertamos en el tablero
      cambia_fila(Tabla_in,Suelo_in,Filan,Columna,1,Tabla_int,Suelo_int),
      Fila22=Filan+1,
@@ -715,8 +713,8 @@ mete(f(4,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Fila0n=Fila0+1,
    
      %Comprobamos si se puede meter o no
-     Fila0n<=Fila1n,
-     Fila2n<=Fila1n,
+     Fila1n>=Fila0n,
+     Fila1n>=Fila2n,
      %Asignamos la altura
      Filan=Fila1n,
      %Comprobamos limite de altura
@@ -753,13 +751,11 @@ mete(f(4,1,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Fila2n=Fila2+1,
      Fila1n=Fila1+1,
      
-     %Hacemos las comprobaciones
-     Fila2n <= Fila1n,
-     
-     %Asignamos
-     Filan=Fila1n,
-     %Comprobacion de altura
-     Filan<3,
+     Fila2n = Fila1n + 2,
+
+     Filan = Fila1n,
+
+     Filan < 3,
      
      %Hacemos la insercion
      cambia_fila(Tabla_in,Suelo_in,Filan,Columna,1,Tabla_int,Suelo_int),
@@ -798,8 +794,9 @@ mete(f(4,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Fila0n=Fila0+1,
    
      %Comprobamos si se puede meter o no
-     Fila0n>Fila2n,
      Fila1n>Fila2n,
+     Fila1n>=Fila2n,
+
      %Asignamos la altura
      Filan=Fila1n,
      %Comprobamos limite de altura
