@@ -548,8 +548,8 @@ mete(f(3,0,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Fila0n=Fila0+1,
      
      %Comprobamos si se puede meter o no
-     Fila0n<=Fila1n,
-     Fila2n<=Fila1n,
+     Fila1n>=Fila0n,
+     Fila1n>=Fila2n,
      %Asignamos la altura
      Filan=Fila1n,
      %Comprobamos limite de altura
@@ -630,8 +630,8 @@ mete(f(3,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
      Fila0n=Fila0+1,
      
      %Verificamos
-     Fila0n<Fila1n,
-     Fila0n<Fila2n,
+     Fila1n>Fila0n,
+     Fila1n<=Fila2n,
 
      %Asignamos la altura
      Filan=Fila1n,
@@ -670,9 +670,11 @@ mete(f(3,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
 
      %Verificamos que quepa la pieza
 
-     Fila1n <= Fila2n,
+     Fila1n = Fila2n + 2,
 
      Filan = Fila2n,
+
+     Filan < 3,
 
      
 
