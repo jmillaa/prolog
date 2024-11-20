@@ -795,7 +795,7 @@ mete(f(4,2,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
    
      %Comprobamos si se puede meter o no
      Fila1n>Fila2n,
-     Fila1n>=Fila2n,
+     Fila1n>=Fila0n,
 
      %Asignamos la altura
      Filan=Fila1n,
@@ -855,6 +855,7 @@ mete(f(4,3,Columna),Tablero_in,Tablero_out):-  /*es una L.-->1  con la base hori
    /*           X     */    
    /*           X     */
    %Orientacion 0
+   %REVISADA
 mete(f(5,0,Columna),Tablero_in,Tablero_out):- 
      Tablero_in=tab(Suelo_in,Tabla_in),
 
@@ -863,21 +864,20 @@ mete(f(5,0,Columna),Tablero_in,Tablero_out):-
      
      %Obtenemos las alturas del suelo
      obtiene_fila(Fila1,Suelo_in,1,Columna),
+
+     Fila1 < 1,
      
      %Hacemos las comprobaciones
-     Fila1n = Fila1,
+     Fila1n = Fila1 + 1,
      
      %Asignamos
-     Filan=Fila1,
+     Filan=Fila1n,
      
      %Hacemos la insercion
      cambia_fila(Tabla_in,Suelo_in,Filan,Columna,1,Tabla_int,Suelo_int),
-     Fila22=Filan+1,
-     cambia_fila(Tabla_int,Suelo_int,Fila22,Columna,1,Tabla_preint,Suelo_preint),
-     Fila3=Fila22+1,
-     cambia_fila(Tabla_preint,Suelo_preint,Fila3,Columna,1,Tabla_preout,Suelo_preout),
-     Fila4 = Fila3 + 1,
-     cambia_fila(Tabla_preout,Suelo_preout,Fila4,Columna,1,Tabla_prepreout,Suelo_prepreout),
+     cambia_fila(Tabla_int,Suelo_int,2,Columna,1,Tabla_preint,Suelo_preint),
+     cambia_fila(Tabla_preint,Suelo_preint,3,Columna,1,Tabla_preout,Suelo_preout),
+     cambia_fila(Tabla_preout,Suelo_preout,4,Columna,1,Tabla_prepreout,Suelo_prepreout),
      limpia_filas(Tabla_prepreout,Suelo_prepreout,Suelo_out,Tabla_out),
      Tablero_out=tab(Suelo_out,Tabla_out).
 
@@ -920,8 +920,9 @@ mete(f(5,1,Columna),Tablero_in,Tablero_out):-
      Filan=Fila3n,
 
      %Hacemos la insercion
-     cambia_fila(Tabla_in,Suelo_in,Filan,Columna0,4,Tabla_int,Suelo_int),
-     limpia_filas(Tabla_int,Suelo_int,Suelo_out,Tabla_out),
+     cambia_fila(Tabla_in,Suelo_in,Filan,Columna,3,Tabla_int,Suelo_int),
+     cambia_fila(Tabla_int,Suelo_int,Filan,Columna0,1,Tabla_preint,Suelo_preint),
+     limpia_filas(Tabla_preint,Suelo_preint,Suelo_out,Tabla_out),
      Tablero_out=tab(Suelo_out,Tabla_out).
 
 /*FICHA PALO       */
@@ -938,21 +939,20 @@ mete(f(5,2,Columna),Tablero_in,Tablero_out):-
      
      %Obtenemos las alturas del suelo
      obtiene_fila(Fila1,Suelo_in,1,Columna),
+
+     Fila1 < 1,
      
      %Hacemos las comprobaciones
-     Fila1 = 0,
+     Fila1n = Fila1 + 1,
      
      %Asignamos
-     Filan=Fila1,
+     Filan=Fila1n,
      
      %Hacemos la insercion
      cambia_fila(Tabla_in,Suelo_in,Filan,Columna,1,Tabla_int,Suelo_int),
-     Fila22=Filan+1,
-     cambia_fila(Tabla_int,Suelo_int,Fila22,Columna,1,Tabla_preint,Suelo_preint),
-     Fila3=Fila22+1,
-     cambia_fila(Tabla_preint,Suelo_preint,Fila3,Columna,1,Tabla_preout,Suelo_preout),
-     Fila4 = Fila3 + 1,
-     cambia_fila(Tabla_preout,Suelo_preout,Fila4,Columna,1,Tabla_prepreout,Suelo_prepreout),
+     cambia_fila(Tabla_int,Suelo_int,2,Columna,1,Tabla_preint,Suelo_preint),
+     cambia_fila(Tabla_preint,Suelo_preint,3,Columna,1,Tabla_preout,Suelo_preout),
+     cambia_fila(Tabla_preout,Suelo_preout,4,Columna,1,Tabla_prepreout,Suelo_prepreout),
      limpia_filas(Tabla_prepreout,Suelo_prepreout,Suelo_out,Tabla_out),
      Tablero_out=tab(Suelo_out,Tabla_out).
 
@@ -995,8 +995,9 @@ mete(f(5,3,Columna),Tablero_in,Tablero_out):-
      Filan=Fila2n,
 
      %Hacemos la insercion
-     cambia_fila(Tabla_in,Suelo_in,Filan,Columna0,4,Tabla_int,Suelo_int),
-     limpia_filas(Tabla_int,Suelo_int,Suelo_out,Tabla_out),
+     cambia_fila(Tabla_in,Suelo_in,Filan,Columna,3,Tabla_int,Suelo_int),
+     cambia_fila(Tabla_int,Suelo_int,Filan,Columna3,1,Tabla_preint,Suelo_preint),
+     limpia_filas(Tabla_preint,Suelo_preint,Suelo_out,Tabla_out),
      Tablero_out=tab(Suelo_out,Tabla_out).
 
 /*  FIN DE LAS FICHAS  */
