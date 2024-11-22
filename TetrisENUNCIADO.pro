@@ -1121,43 +1121,46 @@ mete(f(5,3,Columna),Tablero_in,Tablero_out):-
 
 
 /* Codigo de backtrack */
+%Hay qie implementarlo
 
 /* Caso base: todas las fichas se han colocado */
 backtrack([], Tablero, Solucion, Solucion):- 
     write("=== Caso base alcanzado ===\n"), 
-    write("Estado final del tablero:\n"), pinta(Tablero), % Pinta el tablero final
-    write("Solución final:\n"), escribesol(Solucion).     % Escribe la solución final
+    write("Estado final del tablero:\n"), pinta(Tablero), 
+    write("Solución final:\n"), escribesol(Solucion).     
 
-/* Caso recursivo: intenta colocar la siguiente ficha */
+% Caso recursivo: intenta colocar la siguiente ficha 
 backtrack([Ficha | RestJuego], Tablero, SolucionActual, SolucionFinal):- 
     write("Intentando colocar ficha: "), write(Ficha), write("\n"),
     write("Tablero actual:\n"), pinta(Tablero),
     probar_orientaciones(Ficha, Tablero, 0, SolucionActual, RestJuego, SolucionFinal).
 
-/* Probar todas las orientaciones (0 a 3) */
+%prebo las orientaciones
 probar_orientaciones(Ficha, Tablero, Orientacion, SolucionActual, RestJuego, SolucionFinal):- 
-    Orientacion <= 3,                         % Orientaciones válidas: 0, 1, 2, 3
+    Orientacion <= 3,    
+    %Tengo que quitar los write de depuracion                     
     write("  Probando orientación: "), write(Orientacion), write("\n"),
     probar_columnas(Ficha, Tablero, Orientacion, 1, SolucionActual, RestJuego, SolucionFinal).
 
 probar_orientaciones(Ficha, Tablero, Orientacion, SolucionActual, RestJuego, SolucionFinal):- 
-    Orientacion < 3,                          % Incrementa orientación si no se encuentra solución
+    Orientacion < 3,                          
     OrientacionSiguiente = Orientacion + 1,
     write("  Cambiando a la siguiente orientación: "), write(OrientacionSiguiente), write("\n"),
     probar_orientaciones(Ficha, Tablero, OrientacionSiguiente, SolucionActual, RestJuego, SolucionFinal).
 
-/* Probar todas las columnas (1 a 5) */
+%Con esto probamos todas las columnas posibles
 probar_columnas(Ficha, Tablero, Orientacion, Columna, SolucionActual, RestJuego, SolucionFinal):- 
-    Columna <= 5,                             % Columnas válidas: 1 a 5
+    Columna <= 5,      
+    %Los writes los uso para depurar, los borrare luego                       
     write("    Intentando en columna: "), write(Columna), write("\n"),
-    regla(Tablero, Ficha, Orientacion, Columna, TableroActualizado),  % Intentar colocar la ficha
-    Movimiento = f(Ficha, Orientacion, Columna), % Registrar el movimiento realizado
-    write("    Ficha colocada: "), write(Movimiento), write("\n"),
+    regla(Tablero, Ficha, Orientacion, Columna, TableroActualizado),  
+    Posicion = f(Ficha, Orientacion, Columna),
+    write("    Ficha colocada: "), write(Posicion), write("\n"),
     write("    Tablero actualizado:\n"), pinta(TableroActualizado),
-    backtrack(RestJuego, TableroActualizado, [Movimiento | SolucionActual], SolucionFinal).
+    backtrack(RestJuego, TableroActualizado, [Posicion | SolucionActual], SolucionFinal).
 
 probar_columnas(Ficha, Tablero, Orientacion, Columna, SolucionActual, RestJuego, SolucionFinal):- 
-    Columna < 5,                              % Incrementa columna si no se encuentra solución
+    Columna < 5,                              
     ColumnaSiguiente = Columna + 1,
     write("    Cambiando a la siguiente columna: "), write(ColumnaSiguiente), write("\n"),
     probar_columnas(Ficha, Tablero, Orientacion, ColumnaSiguiente, SolucionActual, RestJuego, SolucionFinal).

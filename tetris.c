@@ -97,7 +97,7 @@ int main (){
     //No voy sobrado de tiempo, de momento me voy a centrar en las que 
     //Usaremos en la secuencia de 1,2,3,3
 
-    colocarPieza(tablero, pieza1[0], 1, 2);
+    colocarPieza(tablero, pieza1[1], 2, 2);
     printf("\n" "Tablero despues de colocacion" "\n");
     imprimeTablero(tablero);
 
