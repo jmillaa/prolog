@@ -53,7 +53,7 @@ void imprimeTablero(int tablero[FILAS][COLUMNAS]);
 void colocarPieza(int tablero[FILAS][COLUMNAS], int pieza[3][3], int fila, int columna);
 int puedoColocarPieza(int tablero[FILAS][COLUMNAS], int pieza[3][3], int fila, int columna);
 int calcularOffsetPieza(int pieza[3][3]);
-int calcular_fila_para_colocar(int tablero[FILAS][COLUMNAS], int pieza[3][3], int columna);
+int calcularFilaParaColocar(int tablero[FILAS][COLUMNAS], int pieza[3][3], int columna);
 int cuentaHuecos(int tablero[FILAS][COLUMNAS]);
 int cuentaAltura(int tablero[FILAS][COLUMNAS]);
 int indiceFilaAlta(int tablero[FILAS][COLUMNAS]);
@@ -200,7 +200,7 @@ void colocarPieza(int tablero[FILAS][COLUMNAS], int pieza[3][3], int fila, int c
     int offset;
 
     // Calcular la fila más baja donde se puede colocar la pieza
-    fila = calcular_fila_para_colocar(tablero, pieza, columna);
+    fila = calcularFilaParaColocar(tablero, pieza, columna);
 
     offset = calcularOffsetPieza(pieza);
 
@@ -257,7 +257,7 @@ int puedoColocarPieza(int tablero[FILAS][COLUMNAS], int pieza[3][3], int fila, i
     return 1; //Se puede insertar la pieza
 }
 
-int calcular_fila_para_colocar(int tablero[FILAS][COLUMNAS], int pieza[3][3], int columna) {
+int calcularFilaParaColocar(int tablero[FILAS][COLUMNAS], int pieza[3][3], int columna) {
     for (int fila = 0; fila < FILAS; fila++) {
         if (!puedoColocarPieza(tablero, pieza, fila, columna)) {
             // Si no se puede colocar en esta fila, devolvemos la fila anterior
@@ -350,7 +350,7 @@ Nodo* crearNodo(int tablero[FILAS][COLUMNAS], int g, int h, int piezaActual, int
 //Insertamos un nodo en la cola de prioridad
 void insertarEnCola(ColaPrioridad* cola, Nodo* nuevo){
     if (cola->cabeza == NULL || nuevo->f < cola->cabeza->f ){
-        //Lo inserto en la cabeza si el nodo tiene una f menor que lo que ya hay, o si la cola esta vacia yes yes yes :)
+        //Lo inserto en la cabeza si el nodo tiene una f menor que lo que ya hay, o si la cola esta vacia VAMOSSSSS yes yes yes :)
         nuevo->sig = cola->cabeza;
         cola->cabeza = nuevo;
     }
@@ -389,7 +389,7 @@ void ejecutarAEstrella(int tablero[FILAS][COLUMNAS], int secuencia[4][4][3][3], 
     Nodo* inicial = crearNodo(tablero, 0, verificarHeuristica(tablero), 0, 0, 0);
     insertarEnCola(&cola, inicial);
 
-    while (!estaVacia(&cola)) {
+    while (!estaVacia(&cola)) { 
         Nodo* actual = extraerNodoCola(&cola);
 
         // Si hemos colocado todas las piezas, imprimimos el tablero final y terminamos
@@ -400,7 +400,7 @@ void ejecutarAEstrella(int tablero[FILAS][COLUMNAS], int secuencia[4][4][3][3], 
             return;
         }
 
-        // Iterar sobre todas las orientaciones y columnas posibles para la pieza actual
+        //Iteramos sobre todas las orientaciones y columnas posibles para la pieza actual
         for (int orientacion = 0; orientacion < 4; orientacion++) {
             for (int columna = 0; columna < COLUMNAS; columna++) {
                 // Crear una copia del tablero actual
@@ -408,7 +408,7 @@ void ejecutarAEstrella(int tablero[FILAS][COLUMNAS], int secuencia[4][4][3][3], 
                 memcpy(nuevoTablero, actual->tablero, sizeof(nuevoTablero));
 
                 // Calcular la fila donde colocar la pieza
-                int fila = calcular_fila_para_colocar(nuevoTablero, secuencia[actual->piezaActual][orientacion], columna);
+                int fila = calcularFilaParaColocar(nuevoTablero, secuencia[actual->piezaActual][orientacion], columna);
 
                 // Si es posible colocar la pieza, crear un nuevo nodo
                 if (puedoColocarPieza(nuevoTablero, secuencia[actual->piezaActual][orientacion], fila, columna)) {
@@ -432,4 +432,3 @@ void ejecutarAEstrella(int tablero[FILAS][COLUMNAS], int secuencia[4][4][3][3], 
     // Si llegamos aquí, no hay solución
     printf("No se encontró una solución.\n");
 }
-
