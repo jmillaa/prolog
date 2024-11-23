@@ -1,0 +1,12 @@
+Tablero inicial:
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+
+Ejecutando algoritmo A*...
+Solución encontrada:
+1 1 1 0 0 
+1 0 1 1 1 
+0 1 1 1 1 
+1 1 1 1 1 

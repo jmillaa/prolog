@@ -1,0 +1,1249 @@
+Tablero inicial:
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 0 0 
+
+Ejecutando algoritmo A*...
+
+Pieza 1 colocada (orientación 0, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 1 0 0 
+
+Pieza 1 colocada (orientación 0, columna 1):
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 1 0 0 
+0 1 1 1 0 
+
+Pieza 1 colocada (orientación 0, columna 2):
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 0 1 0 
+0 0 1 1 1 
+
+Pieza 1 colocada (orientación 1, columna 0):
+0 0 0 0 0 
+1 0 0 0 0 
+1 1 0 0 0 
+1 0 0 0 0 
+
+Pieza 1 colocada (orientación 1, columna 1):
+0 0 0 0 0 
+0 1 0 0 0 
+0 1 1 0 0 
+0 1 0 0 0 
+
+Pieza 1 colocada (orientación 1, columna 2):
+0 0 0 0 0 
+0 0 1 0 0 
+0 0 1 1 0 
+0 0 1 0 0 
+
+Pieza 1 colocada (orientación 1, columna 3):
+0 0 0 0 0 
+0 0 0 1 0 
+0 0 0 1 1 
+0 0 0 1 0 
+
+Pieza 1 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 1 0 0 
+0 1 0 0 0 
+
+Pieza 1 colocada (orientación 2, columna 1):
+0 0 0 0 0 
+0 0 0 0 0 
+0 1 1 1 0 
+0 0 1 0 0 
+
+Pieza 1 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 0 0 0 
+0 0 1 1 1 
+0 0 0 1 0 
+
+Pieza 1 colocada (orientación 3, columna 0):
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 0 0 0 
+0 1 0 0 0 
+
+Pieza 1 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 0 1 0 0 
+0 1 1 0 0 
+0 0 1 0 0 
+
+Pieza 1 colocada (orientación 3, columna 2):
+0 0 0 0 0 
+0 0 0 1 0 
+0 0 1 1 0 
+0 0 0 1 0 
+
+Pieza 1 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 0 0 0 1 
+0 0 0 1 1 
+0 0 0 0 1 
+
+Pieza 2 colocada (orientación 0, columna 2):
+0 0 0 0 0 
+0 0 1 1 0 
+0 1 1 1 0 
+1 1 1 0 0 
+
+Pieza 2 colocada (orientación 0, columna 3):
+0 0 0 0 0 
+0 0 0 0 0 
+0 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 2 colocada (orientación 1, columna 2):
+0 0 0 0 0 
+0 0 1 1 0 
+0 1 1 1 0 
+1 1 1 0 0 
+
+Pieza 2 colocada (orientación 1, columna 3):
+0 0 0 0 0 
+0 0 0 0 0 
+0 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 2 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 1 1 0 
+0 1 1 1 0 
+1 1 1 0 0 
+
+Pieza 2 colocada (orientación 2, columna 3):
+0 0 0 0 0 
+0 0 0 0 0 
+0 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 2 colocada (orientación 3, columna 2):
+0 0 0 0 0 
+0 0 1 1 0 
+0 1 1 1 0 
+1 1 1 0 0 
+
+Pieza 2 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 0 0 0 0 
+0 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 2 colocada (orientación 0, columna 0):
+0 0 0 0 0 
+1 1 0 0 0 
+1 1 1 0 0 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 0, columna 3):
+0 0 0 0 0 
+0 0 0 1 1 
+0 0 1 1 1 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 1, columna 0):
+0 0 0 0 0 
+1 1 0 0 0 
+1 1 1 0 0 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 1, columna 3):
+0 0 0 0 0 
+0 0 0 1 1 
+0 0 1 1 1 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 0 0 0 
+1 1 1 0 0 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 2, columna 3):
+0 0 0 0 0 
+0 0 0 1 1 
+0 0 1 1 1 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 3, columna 0):
+0 0 0 0 0 
+1 1 0 0 0 
+1 1 1 0 0 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 0 0 1 1 
+0 0 1 1 1 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 0, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 0 1 0 
+1 1 1 1 1 
+
+Pieza 2 colocada (orientación 0, columna 1):
+0 0 0 0 0 
+0 1 1 0 0 
+0 1 1 1 0 
+0 0 1 1 1 
+
+Pieza 2 colocada (orientación 1, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 0 1 0 
+1 1 1 1 1 
+
+Pieza 2 colocada (orientación 1, columna 1):
+0 0 0 0 0 
+0 1 1 0 0 
+0 1 1 1 0 
+0 0 1 1 1 
+
+Pieza 2 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 0 1 0 
+1 1 1 1 1 
+
+Pieza 2 colocada (orientación 2, columna 1):
+0 0 0 0 0 
+0 1 1 0 0 
+0 1 1 1 0 
+0 0 1 1 1 
+
+Pieza 2 colocada (orientación 3, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 0 1 0 
+1 1 1 1 1 
+
+Pieza 2 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 1 1 0 0 
+0 1 1 1 0 
+0 0 1 1 1 
+
+Pieza 2 colocada (orientación 0, columna 3):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 1, columna 3):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 2, columna 3):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 0, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 1 1 1 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 1, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 1 1 1 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 1 1 1 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 3, columna 0):
+0 0 0 0 0 
+0 0 0 0 0 
+1 1 1 1 1 
+1 1 0 1 0 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 0 0 
+1 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 1 1 1 
+0 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 0 1 0 0 
+0 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 0 0 
+1 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 1 1 1 
+0 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 0 1 0 0 
+0 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 0 0 
+1 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 1 1 1 
+0 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 0 1 0 0 
+0 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 0 0 
+1 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 1 1 1 
+0 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 0 1 0 0 
+0 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 1 1 1 
+1 1 1 1 0 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 0 1 0 0 
+1 1 1 1 0 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 0 0 1 
+1 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 1 1 1 
+1 1 1 1 0 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 0 1 0 0 
+1 1 1 1 0 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 0 0 1 
+1 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 1 1 1 
+1 1 1 1 0 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 0 1 0 0 
+1 1 1 1 0 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 0 0 1 
+1 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 0 1 1 1 
+1 1 1 1 0 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 0 1 0 0 
+1 1 1 1 0 
+1 1 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 0 0 1 
+1 1 0 1 1 
+1 1 1 1 1 
+
+Pieza 2 colocada (orientación 0, columna 2):
+0 0 0 0 0 
+1 0 0 0 0 
+1 1 1 1 0 
+1 0 1 1 0 
+
+Pieza 2 colocada (orientación 0, columna 3):
+0 0 0 0 0 
+1 0 0 0 0 
+1 1 0 1 1 
+1 0 0 1 1 
+
+Pieza 2 colocada (orientación 1, columna 2):
+0 0 0 0 0 
+1 0 0 0 0 
+1 1 1 1 0 
+1 0 1 1 0 
+
+Pieza 2 colocada (orientación 1, columna 3):
+0 0 0 0 0 
+1 0 0 0 0 
+1 1 0 1 1 
+1 0 0 1 1 
+
+Pieza 2 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+1 0 0 0 0 
+1 1 1 1 0 
+1 0 1 1 0 
+
+Pieza 2 colocada (orientación 2, columna 3):
+0 0 0 0 0 
+1 0 0 0 0 
+1 1 0 1 1 
+1 0 0 1 1 
+
+Pieza 2 colocada (orientación 3, columna 2):
+0 0 0 0 0 
+1 0 0 0 0 
+1 1 1 1 0 
+1 0 1 1 0 
+
+Pieza 2 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+1 0 0 0 0 
+1 1 0 1 1 
+1 0 0 1 1 
+
+Pieza 2 colocada (orientación 0, columna 3):
+0 0 0 0 0 
+0 1 0 0 0 
+0 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 1, columna 3):
+0 0 0 0 0 
+0 1 0 0 0 
+0 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 2, columna 3):
+0 0 0 0 0 
+0 1 0 0 0 
+0 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 1 0 0 0 
+0 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 0, columna 0):
+0 0 0 0 0 
+0 0 1 0 0 
+1 1 1 1 0 
+1 1 1 0 0 
+
+Pieza 2 colocada (orientación 1, columna 0):
+0 0 0 0 0 
+0 0 1 0 0 
+1 1 1 1 0 
+1 1 1 0 0 
+
+Pieza 2 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+0 0 1 0 0 
+1 1 1 1 0 
+1 1 1 0 0 
+
+Pieza 2 colocada (orientación 3, columna 0):
+0 0 0 0 0 
+0 0 1 0 0 
+1 1 1 1 0 
+1 1 1 0 0 
+
+Pieza 2 colocada (orientación 0, columna 0):
+0 0 0 0 0 
+0 0 0 1 0 
+1 1 0 1 1 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 0, columna 1):
+0 0 0 0 0 
+0 0 0 1 0 
+0 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 1, columna 0):
+0 0 0 0 0 
+0 0 0 1 0 
+1 1 0 1 1 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 1, columna 1):
+0 0 0 0 0 
+0 0 0 1 0 
+0 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+0 0 0 1 0 
+1 1 0 1 1 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 2, columna 1):
+0 0 0 0 0 
+0 0 0 1 0 
+0 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 3, columna 0):
+0 0 0 0 0 
+0 0 0 1 0 
+1 1 0 1 1 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 0 0 1 0 
+0 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 0, columna 2):
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 1 1 0 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 0, columna 3):
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 0 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 1, columna 2):
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 1 1 0 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 1, columna 3):
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 0 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 1 1 0 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 2, columna 3):
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 0 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 3, columna 2):
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 1 1 0 
+0 1 1 1 0 
+
+Pieza 2 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 1 0 0 0 
+1 1 0 1 1 
+0 1 0 1 1 
+
+Pieza 2 colocada (orientación 0, columna 3):
+0 0 0 0 0 
+0 0 1 0 0 
+0 1 1 1 1 
+0 0 1 1 1 
+
+Pieza 2 colocada (orientación 1, columna 3):
+0 0 0 0 0 
+0 0 1 0 0 
+0 1 1 1 1 
+0 0 1 1 1 
+
+Pieza 2 colocada (orientación 2, columna 3):
+0 0 0 0 0 
+0 0 1 0 0 
+0 1 1 1 1 
+0 0 1 1 1 
+
+Pieza 2 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 0 1 0 0 
+0 1 1 1 1 
+0 0 1 1 1 
+
+Pieza 2 colocada (orientación 0, columna 0):
+0 0 0 0 0 
+0 0 0 1 0 
+1 1 1 1 0 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 1, columna 0):
+0 0 0 0 0 
+0 0 0 1 0 
+1 1 1 1 0 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+0 0 0 1 0 
+1 1 1 1 0 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 3, columna 0):
+0 0 0 0 0 
+0 0 0 1 0 
+1 1 1 1 0 
+1 1 0 1 0 
+
+Pieza 2 colocada (orientación 0, columna 0):
+0 0 0 0 0 
+0 0 0 0 1 
+1 1 0 1 1 
+1 1 0 0 1 
+
+Pieza 2 colocada (orientación 0, columna 1):
+0 0 0 0 0 
+0 0 0 0 1 
+0 1 1 1 1 
+0 1 1 0 1 
+
+Pieza 2 colocada (orientación 1, columna 0):
+0 0 0 0 0 
+0 0 0 0 1 
+1 1 0 1 1 
+1 1 0 0 1 
+
+Pieza 2 colocada (orientación 1, columna 1):
+0 0 0 0 0 
+0 0 0 0 1 
+0 1 1 1 1 
+0 1 1 0 1 
+
+Pieza 2 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+0 0 0 0 1 
+1 1 0 1 1 
+1 1 0 0 1 
+
+Pieza 2 colocada (orientación 2, columna 1):
+0 0 0 0 0 
+0 0 0 0 1 
+0 1 1 1 1 
+0 1 1 0 1 
+
+Pieza 2 colocada (orientación 3, columna 0):
+0 0 0 0 0 
+0 0 0 0 1 
+1 1 0 1 1 
+1 1 0 0 1 
+
+Pieza 2 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 0 0 0 1 
+0 1 1 1 1 
+0 1 1 0 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 1 1 1 
+0 1 1 1 1 
+1 1 1 0 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 1 1 1 
+0 1 1 1 1 
+1 1 1 0 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 1 1 1 
+0 1 1 1 1 
+1 1 1 0 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 1 1 1 
+0 1 1 1 1 
+1 1 1 0 0 
+
+Pieza 3 colocada (orientación 1, columna 3):
+0 0 0 1 0 
+1 1 0 1 0 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 2):
+0 0 1 1 0 
+1 1 0 1 0 
+1 1 1 1 0 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+1 1 0 1 1 
+1 1 1 0 1 
+0 1 1 1 1 
+
+Pieza 3 colocada (orientación 1, columna 0):
+1 0 0 0 0 
+1 0 0 1 1 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 1 1 
+1 0 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 0):
+1 1 0 0 0 
+0 1 0 1 1 
+0 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 1, columna 3):
+0 0 0 1 0 
+1 1 0 1 0 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 2):
+0 0 1 1 0 
+1 1 0 1 0 
+1 1 1 1 0 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+1 1 0 1 1 
+1 1 1 0 1 
+0 1 1 1 1 
+
+Pieza 3 colocada (orientación 1, columna 0):
+1 0 0 0 0 
+1 0 0 1 1 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 1 1 
+1 0 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 0):
+1 1 0 0 0 
+0 1 0 1 1 
+0 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 1, columna 3):
+0 0 0 1 0 
+1 1 0 1 0 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 2):
+0 0 1 1 0 
+1 1 0 1 0 
+1 1 1 1 0 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+1 1 0 1 1 
+1 1 1 0 1 
+0 1 1 1 1 
+
+Pieza 3 colocada (orientación 1, columna 0):
+1 0 0 0 0 
+1 0 0 1 1 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 1 1 
+1 0 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 0):
+1 1 0 0 0 
+0 1 0 1 1 
+0 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 1, columna 3):
+0 0 0 1 0 
+1 1 0 1 0 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 2):
+0 0 1 1 0 
+1 1 0 1 0 
+1 1 1 1 0 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+1 1 0 1 1 
+1 1 1 0 1 
+0 1 1 1 1 
+
+Pieza 3 colocada (orientación 1, columna 0):
+1 0 0 0 0 
+1 0 0 1 1 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 1 1 
+1 0 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 0):
+1 1 0 0 0 
+0 1 0 1 1 
+0 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 1 1 0 1 
+0 1 1 1 1 
+0 0 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 1 1 0 1 
+0 1 1 1 1 
+0 0 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 1 1 0 1 
+0 1 1 1 1 
+0 0 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 1 1 0 1 
+0 1 1 1 1 
+0 0 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+1 0 0 1 1 
+1 1 1 1 1 
+1 0 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+1 0 1 1 1 
+1 1 1 1 1 
+1 0 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+1 1 1 0 0 
+1 1 1 1 1 
+1 0 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+1 0 0 1 1 
+1 1 1 1 1 
+1 0 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+1 0 1 1 1 
+1 1 1 1 1 
+1 0 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+1 1 1 0 0 
+1 1 1 1 1 
+1 0 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+1 0 0 1 1 
+1 1 1 1 1 
+1 0 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+1 0 1 1 1 
+1 1 1 1 1 
+1 0 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+1 1 1 0 0 
+1 1 1 1 1 
+1 0 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+1 0 0 1 1 
+1 1 1 1 1 
+1 0 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+1 0 1 1 1 
+1 1 1 1 1 
+1 0 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+1 1 1 0 0 
+1 1 1 1 1 
+1 0 1 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 0 1 1 1 
+1 1 1 1 1 
+1 1 1 0 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 0 1 1 1 
+1 1 1 1 1 
+1 1 1 0 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 0 1 1 1 
+1 1 1 1 1 
+1 1 1 0 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 0 1 1 1 
+1 1 1 1 1 
+1 1 1 0 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 1 1 1 0 
+1 1 1 1 1 
+1 1 1 1 0 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 1 0 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 1 1 1 0 
+1 1 1 1 1 
+1 1 1 1 0 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 1 0 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 1 1 1 0 
+1 1 1 1 1 
+1 1 1 1 0 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 1 0 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 1 1 1 0 
+1 1 1 1 1 
+1 1 1 1 0 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 1 0 
+1 1 1 1 1 
+0 1 1 1 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 1 0 1 1 
+1 1 1 1 1 
+0 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 1 1 1 1 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 1 1 0 0 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 1 0 1 1 
+1 1 1 1 1 
+0 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 1 1 1 1 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 1 1 0 0 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 1 0 1 1 
+1 1 1 1 1 
+0 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 1 1 1 1 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 1 1 0 0 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 0 0 
+0 1 0 1 1 
+1 1 1 1 1 
+0 1 1 1 1 
+
+Pieza 3 colocada (orientación 2, columna 2):
+0 0 0 0 0 
+0 1 1 1 1 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 1 1 0 0 
+0 1 1 0 0 
+1 1 1 1 1 
+0 1 0 1 1 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 0 1 1 
+1 1 1 1 1 
+1 1 0 1 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 0 1 1 
+1 1 1 1 1 
+1 1 0 1 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 0 1 1 
+1 1 1 1 1 
+1 1 0 1 0 
+
+Pieza 3 colocada (orientación 3, columna 3):
+0 0 0 1 1 
+0 0 0 1 1 
+1 1 1 1 1 
+1 1 0 1 0 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 1 1 0 1 
+1 1 1 1 1 
+1 1 1 0 1 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 0 1 
+1 1 1 1 1 
+0 1 1 0 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 1 1 0 1 
+1 1 1 1 1 
+1 1 1 0 1 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 0 1 
+1 1 1 1 1 
+0 1 1 0 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 1 1 0 1 
+1 1 1 1 1 
+1 1 1 0 1 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 0 1 
+1 1 1 1 1 
+0 1 1 0 1 
+
+Pieza 3 colocada (orientación 3, columna 1):
+0 0 0 0 0 
+0 1 1 0 1 
+1 1 1 1 1 
+1 1 1 0 1 
+
+Pieza 3 colocada (orientación 2, columna 0):
+0 0 0 0 0 
+1 1 1 0 1 
+1 1 1 1 1 
+0 1 1 0 1 
+
+Pieza 4 colocada (orientación 3, columna 3):
+0 1 1 1 1 
+0 0 1 0 1 
+1 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 4 colocada (orientación 3, columna 1):
+0 1 1 1 1 
+0 0 1 0 1 
+1 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 4 colocada (orientación 3, columna 3):
+0 1 1 1 1 
+0 0 1 0 1 
+1 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 4 colocada (orientación 3, columna 1):
+0 1 1 1 1 
+0 0 1 0 1 
+1 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 4 colocada (orientación 3, columna 3):
+0 1 1 1 1 
+0 0 1 0 1 
+1 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 4 colocada (orientación 3, columna 1):
+0 1 1 1 1 
+0 0 1 0 1 
+1 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 4 colocada (orientación 3, columna 3):
+0 1 1 1 1 
+0 0 1 0 1 
+1 1 1 1 1 
+1 1 1 1 1 
+
+Pieza 4 colocada (orientación 3, columna 1):
+0 1 1 1 1 
+0 0 1 0 1 
+1 1 1 1 1 
+1 1 1 1 1 
+
+Solución encontrada:
+0 1 1 1 1 
+0 0 1 0 1 
+1 1 1 1 1 
+1 1 1 1 1 
