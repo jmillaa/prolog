@@ -13,6 +13,8 @@ int puedoColocarPieza(int tablero[FILAS][COLUMNAS], int pieza[3][3], int fila, i
 int calcularOffsetPieza(int pieza[3][3]);
 int calcular_fila_para_colocar(int tablero[FILAS][COLUMNAS], int pieza[3][3], int columna);
 int cuentaHuecos(int tablero[FILAS][COLUMNAS]);
+int cuentaAltura(int tablero[FILAS][COLUMNAS]);
+
 
 
 
@@ -108,19 +110,33 @@ int main (){
         colocarPieza(tablero, pieza1[i], 0, 0);
         printf("\n" "Tablero despues de colocacion" "\n");
         imprimeTablero(tablero);
-        huecos = cuentaHuecos
+        huecos = cuentaHuecos(tablero);
+        printf("Numero de huecos en blanco %d", huecos);
+        printf("\n");
+        altura = cuentaAltura(tablero);
+        printf("Altura %d", altura);
         iniciarTablero(tablero);
     }
 
     colocarPieza(tablero, pieza2[0], 0, 0);
         printf("\n" "Tablero despues de colocacion" "\n");
         imprimeTablero(tablero);
+        huecos = cuentaHuecos(tablero);
+        printf("Numero de huecos en blanco %d", huecos);
+        printf("\n");
+        altura = cuentaAltura(tablero);
+        printf("Altura %d", altura);
         iniciarTablero(tablero);
 
     for (i = 0; i<4 ; i++){
         colocarPieza(tablero, pieza3[i], 0, 0);
         printf("\n" "Tablero despues de colocacion" "\n");
         imprimeTablero(tablero);
+        huecos = cuentaHuecos(tablero);
+        printf("Numero de huecos en blanco %d", huecos);
+        printf("\n");
+        altura = cuentaAltura(tablero);
+        printf("Altura %d", altura);
         iniciarTablero(tablero);
     }
 }
@@ -221,6 +237,13 @@ int calcular_fila_para_colocar(int tablero[FILAS][COLUMNAS], int pieza[3][3], in
 
 int cuentaAltura(int tablero[FILAS][COLUMNAS]){
     int i,j;
+    for (i=0; i<FILAS; i++){
+        for (j=0; j<COLUMNAS; j++){
+            if(tablero[i][j] == 1){
+                return FILAS-i;
+            }
+        }
+    }
     
     return 0; //Si el tablero esta vacio devuelve altura 0
 }
