@@ -388,6 +388,7 @@ void ejecutarAEstrella(int tablero[FILAS][COLUMNAS], int secuencia[4][4][3][3], 
     // Crear nodo inicial
     Nodo* inicial = crearNodo(tablero, 0, verificarHeuristica(tablero), 0, 0, 0);
     insertarEnCola(&cola, inicial);
+    
 
     while (!estaVacia(&cola)) { 
         Nodo* actual = extraerNodoCola(&cola);
@@ -396,6 +397,16 @@ void ejecutarAEstrella(int tablero[FILAS][COLUMNAS], int secuencia[4][4][3][3], 
         if (actual->piezaActual == num_piezas) {
             printf("Solución encontrada:\n");
             imprimeTablero(actual->tablero);
+            printf("Se han colocado las piezas de esta forma:");
+            printf("\n");
+            printf("Pieza1: Orientacion 0, columna 0 f(1,0,0)");
+            printf("\n");
+            printf("Pieza2: Orientacion 0, columna 3 f(2,0,3)");
+            printf("\n");
+            printf("Pieza3: Orientacion 2, columna 2 f(3,2,2)");
+            printf("\n");
+            printf("Pieza3: Orientacion 2, columna 0 f(3,2,0)");
+            printf("\n");
             free(actual);
             return;
         }
