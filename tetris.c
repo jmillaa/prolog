@@ -1,4 +1,5 @@
 /*Autores: Jorge Milla Hernandez y Alvaro Fincias*/
+/* Segunda practica Fundamentos de Sistemas inteligentes, Universidad de Salamanca 2024*/
 /*  
            _____          _            _       
           |_   _|   ___  | |_   _ __  (_)  ___ 
@@ -9,14 +10,47 @@
             Autores: Jorge Milla Hernandez Y Alvaro Fincias
             Usando el algoritmo A estrella                       
 */
-
-/*La Heuristica que hemos pensado para resolver el juego del tetris aplicando el algoritmo de A estrella es la siguiente:
+/*  ==============================     README*     =======================================/
+/*  La Heuristica que hemos pensado para resolver el juego del tetris aplicando el algoritmo de A estrella es la siguiente:
     Creemos que lo mas importante es minimizar el numero de huecos en blanco por debajo de la altura de la pieza mas elevada. 
     Ademas, vamos a preferir una colocacion de las piezas en el tablero que sea de menor altura ya que de esta forma estaremos
     mas alejados del limite superior del tablero y mas vivos en el juego. Creo que es mejor darle mas importancia a lo de los huecos
     en blanco, por lo que le daremos mas prioridad, multiplicandola por una constante para aumentar el valor rapidamente.
+
+    En la implementacion que hemos hecho en esta practica, para verificar la heuristica, hemos hecho una funcion que nos cuenta el
+    numero de espacios en blanco que hay por debajo de la altura maxima de la pieza que haya colocada. Explico esto-> 
+
+    1 0 0 0 <-      Si tuvieramos este tablero (es un ejemplo) caclularia el numero de espacios en blanco que hay por debajo de la 
+    1 1 0 0  .      primera fila. Es ese ejemplo nos daria 3 espacios en blanco (Espero haberlo explicado lo mejor posible)
+    1 1 1 0  .  
+
+    Tambien se hace una heuristica basada en la altura. Hemos creido que un posicionamiento de las piezas formando un tablero de menor
+    altura es mejor, ya que nos va a permitir tener mas espacio entre las piezas y el limite superior. 
+
+    Esto lo hacemos con las funciones, cuentaHuecos y cuentaAltura. Finalmente las juntamos en la funcion verificarHeuristica. En la que
+    multiplicamos por 20 el numero de huecos, para darle una mayor importancia a ese factor y que a la hora de insertar el nodo en la cola
+    de prioridad, siempre priorice los que menos huecos tengan. 
+
+    Sobre los valores de A estrella f, g, h. Se incrementa en 1 el valor de g (el coste acumulado) cada vez que insertamos una pieza
+    y calculamos el h con la funcion de veriificar heuristica. 
+
+    La heuristica es mayormente admisible, aunque hay algunas situaciones con respecto a la altura, se podria sobreestimar el coste de la f, 
+    pero generalmente es una heuristica admisible. 
+
+    Tambien creemos que parece mayormente consistente, ya que normalmente las penalizaciones por huecos y altura aumentan
+    con cada movimiento. Sin embargo, puede haber casos límite en los que la penalización por altura no sea estrictamente proporcional al costo real.
     
-    Cuando acabe el codigo tengop que dar mas informacion sobre el proceso, que no se me olvide) */
+    Utilizamos una cola de prioridad donde vamos metiendo los nodos de forma ordenada en funcion de la f de cada nodo. El primer nodo
+    es el del tablero vacio y a partir de ahi, se prueban todas las opciones que hay, metiendo ordenadamente en la cola los de una f menor primero
+    
+    Solo hemos implementado la logica de las piezas que entran en juego pieza1, pieza2, pieza3. En un futuro se deberian implementar 
+    todas. 
+
+    Por ultimo, me gustaria explicar por que hemos usado C como lenguaje de programacion para la practica.
+    Creo que el codigo a nivel de buenas practicas es una chapuza, cumple, pero no es perfecto (y pedimos disculpas por eso). 
+    C es el unico lenguaje que "Domino" como para hacer una practica de este estilo, en un futuro me gustaria poder aprender python
+    porque creo que hubiese sido mas sencillo en muchas cosas.
+    =====================================================================================================================*/
 
 
 #include <stdio.h>
@@ -35,14 +69,14 @@ typedef struct Nodo{
     int tablero[FILAS][COLUMNAS];
     int g; //Costo acumulado
     int h; //Coste de la Heuristica desde el nodo al final
-    int f; // Es la suma de g(n) + h(n)
+    int f; // Es la suma de g(n) + h(n) (Valor que nos va a decir si es mejor esta opcion u otra)
     int piezaActual; 
     int orientacion; // Orientación actual de la pieza
     int columna; // Columna donde se coloca la pieza
     struct Nodo* sig; //Apunta al siguiente nodo en la cola de prioridad
 } Nodo;
 
-//Cola
+//Cola para insertar los nodos
 typedef struct ColaPrioridad{
     Nodo* cabeza;
 } ColaPrioridad;
@@ -63,8 +97,7 @@ void insertarEnCola(ColaPrioridad* cola, Nodo* nuevo);
 Nodo* extraerNodoCola(ColaPrioridad* cola);
 int estaVacia(ColaPrioridad* cola);
 void ejecutarAEstrella(int tablero[FILAS][COLUMNAS], int secuencia[4][4][3][3], int num_piezas);
-
-
+int verificarHeuristica(int tablero[FILAS][COLUMNAS]);
 
 
 
@@ -167,12 +200,14 @@ int main (){
     printf("Tablero inicial:\n");
     imprimeTablero(tablero);
 
-    // Ejecutar A*
+    // Ejecutamos el algoritmo A*
     printf("\nEjecutando algoritmo A*...\n");
     ejecutarAEstrella(tablero, secuencia, num_piezas);
 
     return 0;
 }
+
+//Funciones 
 
 void iniciarTablero(int tablero[FILAS][COLUMNAS]){
     int i, j;
@@ -202,7 +237,7 @@ void colocarPieza(int tablero[FILAS][COLUMNAS], int pieza[3][3], int fila, int c
     // Calcular la fila más baja donde se puede colocar la pieza
     fila = calcularFilaParaColocar(tablero, pieza, columna);
 
-    offset = calcularOffsetPieza(pieza);
+    offset = calcularOffsetPieza(pieza); //Esto sirve por si la pieza tiene una columna entera de 0, que la omita y la coloque a partir de donde hay 1
 
     if(puedoColocarPieza(tablero, pieza, fila, columna)){
         for (i=0; i<3; i++){
@@ -281,6 +316,7 @@ int cuentaAltura(int tablero[FILAS][COLUMNAS]){
     return 0; //Si el tablero esta vacio devuelve altura 0
 }
 
+//Cuenta el numero de huecos que hay por debajo de la altura maxima de la pieza mas alta (POR DEBAJO DE LA ALTURA MAS ALTA !!!!!)
 int cuentaHuecos(int tablero[FILAS][COLUMNAS]){
     int i,j;
     int contadorHuecos = 0;
